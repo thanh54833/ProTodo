@@ -1,0 +1,4 @@
+include ':liquid-swipe'
+include ':liquid-swipe'
+include ':app'
+rootProject.name = "ProTodo"

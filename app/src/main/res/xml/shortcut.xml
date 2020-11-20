@@ -1,0 +1,60 @@
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:targetApi="25">
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/ic_less"
+        android:shortcutId="shortcut_name_1"
+        android:shortcutShortLabel="@string/gamers">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetClass=".main.MainAct"
+            android:targetPackage="com.example.app">
+            <extra
+                android:name="key"
+                android:value="value" />
+            <extra
+                android:name="key 1"
+                android:value="value 1" />
+        </intent>
+        <categories android:name="android.shortcut.conversation" />
+    </shortcut>
+
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/ic_less"
+        android:shortcutId="shortcut_name_2"
+        android:shortcutShortLabel="@string/gamers">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetClass=".main.MainAct"
+            android:targetPackage="com.example.app">
+            <extra
+                android:name="key"
+                android:value="value" />
+            <extra
+                android:name="key 1"
+                android:value="value 1" />
+        </intent>
+        <categories android:name="android.shortcut.conversation" />
+    </shortcut>
+
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/ic_less"
+        android:shortcutId="shortcut_name_3"
+        android:shortcutShortLabel="@string/gamers">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetClass=".main.MainAct"
+            android:targetPackage="com.example.app">
+            <extra
+                android:name="key"
+                android:value="value" />
+            <extra
+                android:name="key 1"
+                android:value="value 1" />
+        </intent>
+        <categories android:name="android.shortcut.conversation" />
+    </shortcut>
+</shortcuts>

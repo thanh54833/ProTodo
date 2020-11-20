@@ -1,0 +1,50 @@
+//Todo : Dùng để share đoạn text
+
+Intent intent = new Intent(Intent.ACTION_SEND);
+intent.setType("text/plain");
+intent.putExtra(Intent.EXTRA_SUBJECT, "My application name");
+intent.putExtra(Intent.EXTRA_TEXT, "This is my text");
+startActivity(Intent.createChooser(intent, "choose one"));
+
+
+//Todo : Thêm app vào share list cua thiết bị
+(https://stackoverflow.com/questions/11095122/how-to-make-my-android-app-appear-in-the-share-list-of-another-specific-app)
+
+//Todo : Xin quền cho thiết bị
+ RxPermissions(this).request(
+            permissions
+        ).subscribe { granted ->
+            if (granted) { // Always true pre-M
+                "I can control the camera now".Log()
+            } else {
+                "Oups permission denied".Log()
+            }
+        }
+
+// Todo : Lấy cái url đươc share trên app , mai thanh lam ... sưa lôi chay 2 app một lúc ...
+https://stackoverflow.com/questions/40303717/cant-get-uri-of-captured-screenshot-from-intent-getparcelableextraintent-extra
+
+
+// Todo : Dùng cái pop-up windown (https://stackoverflow.com/questions/56422647/android-how-to-show-popup-window-directly-above-button)
+ binding.popUp.setOnClickListener {
+            val inflater = this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+            val pw = PopupWindow(
+                inflater.inflate(R.layout.popup_example, null, false),
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                true
+            )
+            // The code below assumes that the root container has an id called 'main'
+            // The code below assumes that the root container has an id called 'main'
+            pw.showAtLocation(
+                binding.popUp,
+                Gravity.CENTER,
+                binding.popUp.x.toInt(),
+                binding.popUp.y.toInt()
+            )
+        }
+
+
+// Todo : Code chạy shortcut ..
+
+

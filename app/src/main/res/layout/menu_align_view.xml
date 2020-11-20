@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimary"
+    android:elevation="5dp"
+    android:gravity="center"
+    app:carbon_cornerRadius="2dp"
+    app:carbon_elevation="8dp">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
+        android:padding="5dp"
+        android:src="@drawable/ic_align_right" />
+
+    <View
+        android:layout_width="0.5dp"
+        android:layout_height="25dp"
+        android:background="@color/light" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
+        android:padding="5dp"
+        android:src="@drawable/ic_align_center" />
+
+    <View
+        android:layout_width="0.5dp"
+        android:layout_height="25dp"
+        android:background="@color/light" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
+        android:padding="5dp"
+        android:src="@drawable/ic_align_right" />
+
+</LinearLayout>
