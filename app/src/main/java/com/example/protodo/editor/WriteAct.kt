@@ -10,8 +10,6 @@ import android.graphics.Color
 import android.graphics.Point
 import android.graphics.drawable.ColorDrawable
 import android.net.wifi.WifiManager
-import android.os.Build
-import android.provider.Settings
 import android.text.Editable
 import android.text.Spannable
 import android.text.TextWatcher
@@ -29,14 +27,15 @@ import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import com.example.protodo.R
 import com.example.protodo.SettingUtils.SettingUtils
-import com.example.protodo.Shortcuts.ShortCutModel
-import com.example.protodo.Shortcuts.ShortcutUtils
 import com.example.protodo.Utils.Log
 import com.example.protodo.abs.ProTodActivity
 import com.example.protodo.common.SizeUtils
 import com.example.protodo.common.SizeUtils.getViewHeight
+import com.example.protodo.config.ConfigUtils
 import com.example.protodo.databinding.WriteActBinding
 import com.example.protodo.effect.AnimationUtils
+import com.example.protodo.keyboard.KeyboardUtils
+import com.example.protodo.palette.PaletteBottomView
 import com.example.protodo.typeface.Font
 import com.example.protodo.typeface.TypefaceUtils
 import kotlinx.android.synthetic.main.expand_option_type.view.*
@@ -48,6 +47,9 @@ class WriteAct : ProTodActivity() {
     lateinit var binding: WriteActBinding
     private var expandView: View? = null
     private var isExpand: Boolean = false
+    private var isExpandKeyBoard: Boolean = true
+    private var isShowKeyboard: Boolean = false
+
 
     override fun initiativeView() {
         binding = DataBindingUtil.setContentView(this@WriteAct, R.layout.write_act)
@@ -72,31 +74,33 @@ class WriteAct : ProTodActivity() {
             wifiStateChangedReceiver,
             IntentFilter(WifiManager.WIFI_STATE_CHANGED_ACTION)
         )
+
+        //Todo :
         binding.contentTv.setOnClickListener {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-                val panelIntent = Intent(Settings.Panel.ACTION_INTERNET_CONNECTIVITY)
-                startActivityForResult(panelIntent, 0)
-            } else {
-                // add appropriate permissions to AndroidManifest file (see https://stackoverflow.com/questions/3930990/android-how-to-enable-disable-wifi-or-internet-connection-programmatically/61289575)
-                (baseContext.getSystemService(Context.WIFI_SERVICE) as? WifiManager)?.apply {
-                    isWifiEnabled = true /*or false*/
-                }
-            }
+
+
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+//                val panelIntent = Intent(Settings.Panel.ACTION_INTERNET_CONNECTIVITY)
+//                startActivityForResult(panelIntent, 0)
+//            } else {
+//                // add appropriate permissions to AndroidManifest file (see https://stackoverflow.com/questions/3930990/android-how-to-enable-disable-wifi-or-internet-connection-programmatically/61289575)
+//                (baseContext.getSystemService(Context.WIFI_SERVICE) as? WifiManager)?.apply {
+//                    isWifiEnabled = true /*or false*/
+//                }
+//            }
+
+
         }
 
         SettingUtils(this@WriteAct).apply {
-
             //clearAppData(applicationContext.packageName)
             clearAllApp()
             //appInForeground()
             //isRunning(this@WriteAct, "com.android.chrome").Log("com.android.chrome :..")
-
             this@WriteAct.isAppInForeground()
-
-
             //clearAppData("clearAppData")
-
         }
+
     }
 
     fun Context.isAppInForeground(): Boolean {
@@ -135,42 +139,13 @@ class WriteAct : ProTodActivity() {
     }
 
 
-    fun shortCut() {
-        val shortCutModel = ShortCutModel().apply {
-            shortLabel = "shortLabel"
-            longLabel = "longLabel"
-            disabledMessage = "disabledMessage"
-            icon = R.drawable.ic_app
-            startIntent = WriteAct::class.java
-        }
-        val shortCutModel1 = ShortCutModel().apply {
-            shortLabel = "shortLabel"
-            longLabel = "longLabel"
-            disabledMessage = "disabledMessage"
-            icon = R.drawable.ic_align_center
-            startIntent = WriteAct::class.java
-        }
-
-        val shortCutModel2 = ShortCutModel().apply {
-            shortLabel = "shortLabel"
-            longLabel = "longLabel"
-            disabledMessage = "disabledMessage"
-            icon = R.drawable.ic_align_right
-            startIntent = WriteAct::class.java
-        }
-        ShortcutUtils(this@WriteAct, listOf(shortCutModel, shortCutModel1, shortCutModel2)).build()
-    }
-
-
     //Todo :
     private fun handleContent() {
-
         //val font = Typeface.createFromAsset(assets, "Akshar.ttf")
         var mStart = -1
         binding.contentTv.setOnClickListener {
             mStart = binding.contentTv.text?.length ?: -1
         }
-
         binding.contentTv.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(textChange: Editable?) {
                 //"afterTextChanged:...${textChange} ".Log()
@@ -242,8 +217,6 @@ class WriteAct : ProTodActivity() {
                 )
             }
         }
-
-
 //        if ((binding.contentTv.text?.length ?: 0) < 5) {
 //
 //        } else {
@@ -254,14 +227,42 @@ class WriteAct : ProTodActivity() {
 //                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
 //            )
 //        }
-
     }
 
     private fun initKeyboard() {
-        keyBoardActListener = { _, _height, _ ->
+        keyBoardActListener = { _, _height, _visible ->
+            isShowKeyboard = _visible
+            if (isExpandKeyBoard) {
+                binding.keyboardGroup.layoutParams = LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT,
+                    _height
+                )
+            } else {
+                isExpandKeyBoard = true
+            }
+        }
+
+//        binding.keyboardGroup.layoutParams = LinearLayout.LayoutParams(
+//            LinearLayout.LayoutParams.MATCH_PARENT,
+//            LinearLayout.LayoutParams.WRAP_CONTENT
+//        )
+
+        // Todo : Nội dung thêm vào :...
+        // Todo : Th1 : Hiên thị thêm bẳng màu ....
+        binding.contentBottomKeyboard.addView(PaletteBottomView(this@WriteAct))
+
+    }
+
+    private fun setExpandBottomKeyboard(isExpand: Boolean) {
+        if (isExpand) {
             binding.keyboardGroup.layoutParams = LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
-                _height
+                ConfigUtils.KEY_BOARD_HEIGHT
+            )
+        } else {
+            binding.keyboardGroup.layoutParams = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                0
             )
         }
     }
@@ -297,6 +298,15 @@ class WriteAct : ProTodActivity() {
             binding.boldBt.isSelected = !binding.boldBt.isSelected
             binding.boldBt.handleBgBt()
             Font.Bold.isAction = binding.boldBt.isSelected
+
+            // Todo : thanh test picker color :...
+            // Todo : khi click thì ẩn bàn phím đi ...
+            isExpandKeyBoard = false
+            if (isShowKeyboard) {
+                KeyboardUtils.hideSoftKeyboard(this)
+            } else {
+                setExpandBottomKeyboard(true)
+            }
         }
         binding.italicBt.setOnClickListener {
             binding.italicBt.isSelected = !binding.italicBt.isSelected
@@ -365,7 +375,6 @@ class WriteAct : ProTodActivity() {
 
             val colorPicker = ColorPicker(this@WriteAct)
             colorPicker.setDefaultColorButton(Color.parseColor("#f84c44"))
-
             colorPicker.setOnChooseColorListener(object : ColorPicker.OnChooseColorListener {
                 override fun onChooseColor(position: Int, color: Int) {
                     // put code
@@ -427,10 +436,14 @@ class WriteAct : ProTodActivity() {
         }
 
         binding.textColorBt.setOnClickListener {
-            picketColor("Chọn màu phông chữ")
+            //picketColor("Chọn màu phông chữ")
+            //Todo : Thanh viêt lại picker color v2 :...
+
         }
         binding.textPaletteBt.setOnClickListener {
-            picketColor("Chọn màu đánh dấu")
+            //picketColor("Chọn màu đánh dấu")
+            //Todo : Thanh viêt lại picker color v2 :...
+
         }
 
 
@@ -463,7 +476,7 @@ class WriteAct : ProTodActivity() {
             isExpand = if (!isExpand) {
                 AnimationUtils.expand(
                     binding.expandLayout,
-                    targetHeight = getViewHeight(binding.expandLayout)
+                    targetHeight = getViewHeight(expandView!!).Log("getViewHeight(expandView!!) :...")
                 )
                 true
             } else {

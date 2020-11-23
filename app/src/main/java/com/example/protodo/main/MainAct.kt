@@ -11,6 +11,9 @@ import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.example.protodo.R
+import com.example.protodo.Shortcuts.ShortCutModel
+import com.example.protodo.Shortcuts.ShortcutUtils
+import com.example.protodo.Test.TestViewAct
 import com.example.protodo.Utils.Log
 import com.example.protodo.abs.ProTodActivity
 import com.example.protodo.databinding.ActivityMainBinding
@@ -42,10 +45,36 @@ class MainAct : ProTodActivity() {
 //        }
 
         //initLiquidPager()
+        shortCut()
+        //startActivity(WriteAct.getIntent(this@MainAct))
 
-        startActivity(WriteAct.getIntent(this@MainAct))
+        startActivity(TestViewAct.getIntent(this@MainAct))
 
+    }
 
+    private fun shortCut() {
+        val shortCutModel = ShortCutModel().apply {
+            shortLabel = "Test Label"
+            longLabel = "Test long Label"
+            disabledMessage = "disabledMessage"
+            icon = R.drawable.ic_app
+            startIntent = TestViewAct::class.java
+        }
+        val shortCutModel1 = ShortCutModel().apply {
+            shortLabel = "shortLabel"
+            longLabel = "longLabel"
+            disabledMessage = "disabledMessage"
+            icon = R.drawable.ic_align_center
+            startIntent = WriteAct::class.java
+        }
+        val shortCutModel2 = ShortCutModel().apply {
+            shortLabel = "shortLabel"
+            longLabel = "longLabel"
+            disabledMessage = "disabledMessage"
+            icon = R.drawable.ic_align_right
+            startIntent = WriteAct::class.java
+        }
+        ShortcutUtils(this@MainAct, listOf(shortCutModel, shortCutModel1, shortCutModel2)).build()
     }
 
     private fun initLiquidPager() {
@@ -69,15 +98,11 @@ class MainAct : ProTodActivity() {
 
     @SuppressLint("CheckResult")
     private fun initView() {
-
-
         "MainActivity :.. ".Log()
         //ShareDialog(this@MainAct).setData().show()
 //        binding.contentLayout.setOnClickListener {
 //            ProgressBar(this@MainAct).start()
 //        }
-
-
     }
 
     private fun initData() {

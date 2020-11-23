@@ -363,18 +363,29 @@
                     android:layout_height="45dp"
                     android:background="@color/divider"
                     android:padding="10dp"
-                    android:src="@drawable/ic_more"
-
-                    />
+                    android:src="@drawable/ic_more" />
 
             </LinearLayout>
 
+            <!--Todo : dung đê hiện thi thêm thông tin  -->
             <LinearLayout
                 android:id="@+id/keyboard_group"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/colorPrimary"
-                android:orientation="vertical" />
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/divider" />
+
+                <androidx.core.widget.NestedScrollView
+                    android:id="@+id/content_bottom_keyboard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
 
         </LinearLayout>
     </LinearLayout>

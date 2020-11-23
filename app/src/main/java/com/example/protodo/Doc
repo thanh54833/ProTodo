@@ -48,3 +48,14 @@ https://stackoverflow.com/questions/40303717/cant-get-uri-of-captured-screenshot
 // Todo : Code chạy shortcut ..
 
 
+
+
+//Todo : bật , tắt bluetooth :...
+      Bluetooth.setEnable(false)
+     Internet.setEnable(this@TestViewAct, false)
+
+
+
+// Todo : Chưa lam được :
+--- clear all đang chạy
+--- bật tắt wifi
