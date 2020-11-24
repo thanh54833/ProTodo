@@ -18,11 +18,20 @@ class ControlPanelAct : ProTodActivity() {
     }
 
     private fun initView() {
+        binding.soundSwt.isChecked = true
 
     }
 
     private fun initAction() {
-
+        binding.soundGroup.setOnClickListener {
+            binding.soundSwt.isChecked = !binding.soundSwt.isChecked
+        }
+        binding.rungGroup.setOnClickListener {
+            binding.rungSwt.isChecked = !binding.rungSwt.isChecked
+        }
+        binding.pauseGroup.setOnClickListener {
+            binding.pauseSwt.isChecked = !binding.pauseSwt.isChecked
+        }
     }
 
     companion object {

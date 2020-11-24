@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools" xmlns:ns1="http://schemas.android.com/apk/res-auto">
+<resources xmlns:ns1="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
@@ -29,6 +29,18 @@
         <item name="android:gravity">center_vertical</item>
         <item name="android:textSize">@dimen/text_normal</item>
         <item name="fontWeight">700</item>
+        <item name="android:textColorHint">@color/text_light</item>
+    </style>
+
+    <style name="ProTodo.TextView.Normal.TextView">
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+    </style>
+
+    <style name="ProTodo.TextView.Normal.EditText">
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:background">@color/transparent</item>
     </style>
 
 
@@ -78,7 +90,7 @@
     <style name="Halo.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-<!--        <item name="errorIconDrawable">@null</item>-->
+        <!--        <item name="errorIconDrawable">@null</item>-->
         <item name="android:textColorHint">@color/text_light</item>
         <item name="hintTextAppearance">@style/TextInputLayoutHintTextStyle</item>
         <item name="android:textColor">@color/black</item>
@@ -86,18 +98,18 @@
         <item name="android:layout_marginEnd">15dp</item>
         <item name="android:textSize">15sp</item>
         <item name="theme">@style/TextInputLayoutNormalStyle</item>
-        <item name="errorTextAppearance">@style/Halo.ErrorTextInput</item>
+        <!--        <item name="errorTextAppearance">@style/Halo.ErrorTextInput</item>-->
         <item name="boxStrokeColor" ns1:ignore="PrivateResource" tools:ignore="PrivateResource">
             @color/divider
         </item>
-        <item name="boxStrokeErrorColor" ns1:ignore="PrivateResource" tools:ignore="PrivateResource">
-            @color/text_notice
-        </item>
-        <item name="helperTextTextAppearance">@style/Halo.HelperTextInput</item>
-        <item name="boxStrokeWidthFocused">1dp</item>
+        <!--        <item name="boxStrokeErrorColor" ns1:ignore="PrivateResource" tools:ignore="PrivateResource">-->
+        <!--            @color/text_notice-->
+        <!--        </item>-->
+        <!--        <item name="helperTextTextAppearance">@style/Halo.HelperTextInput</item>-->
+        <!--        <item name="boxStrokeWidthFocused">1dp</item>-->
         <item name="boxStrokeWidth">1dp</item>
         <item name="boxBackgroundColor">@color/transparent</item>
-        <item name="materialThemeOverlay">@style/OverlayFilledPadding</item>
+        <!--        <item name="materialThemeOverlay">@style/OverlayFilledPadding</item>-->
 
     </style>
 
@@ -140,6 +152,16 @@
         <item name="android:fontFamily">@font/muli</item>
         <item name="fontFamily">@font/muli</item>
         <item name="fontWeight">500</item>
+    </style>
+
+    <style name="ProTodoSwitchCompat">
+        <item name="android:thumb">@drawable/switch_thumb</item>
+        <item name="track">@drawable/switch_track</item>
+        <item name="showText">true</item>
+        <item name="android:textOn"></item>
+        <item name="android:textOff"></item>
+        <item name="android:scaleX">0.8</item>
+        <item name="android:scaleY">0.8</item>
     </style>
 
 
