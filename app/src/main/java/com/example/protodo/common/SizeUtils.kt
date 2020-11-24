@@ -1,12 +1,19 @@
 package com.example.protodo.common
 
 import android.content.Context
+import android.content.res.Resources
 import android.graphics.Point
 import android.os.Build
 import android.view.View
 import android.view.WindowManager
 
 object SizeUtils {
+
+    fun dp2px(dpValue: Float): Int {
+        val scale = Resources.getSystem().displayMetrics.density
+        return (dpValue * scale + 0.5f).toInt()
+    }
+
     fun getViewHeight(view: View): Int {
         val wm = view.context
             .getSystemService(Context.WINDOW_SERVICE) as WindowManager

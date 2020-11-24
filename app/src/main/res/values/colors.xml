@@ -19,6 +19,11 @@
     <color name="divider">#F8F8F8</color>
     <color name="divider_light">#F2F2F2</color>
 
+    <color name="text_notice">#FF3F34</color>
+    <color name="transparent">#00000000</color>
+    <color name="text_light">#888888</color>
+    <color name="text_focus">#0AC46B</color>
+
     <!--https://htmlcolorcodes.com/-->
     <array name="colors">
         <item>#FFFFFF</item>

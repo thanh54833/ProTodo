@@ -10,7 +10,7 @@ import androidx.databinding.DataBindingUtil
 import com.example.protodo.R
 import com.example.protodo.Utils.Log
 import com.example.protodo.abs.ProTodActivity
-import com.example.protodo.component.WifiUtil
+import com.example.protodo.component.WifiAdmin
 import com.example.protodo.databinding.TestViewActBinding
 import com.example.protodo.palette.PaletteBottomView
 import com.example.protodo.permisstion.RxPermissions
@@ -29,47 +29,11 @@ class TestViewAct : ProTodActivity() {
 
     @SuppressLint("CheckResult", "MissingPermission")
     private fun bind3() {
-//        RxPermissions(this).request(
-//            "android.permission.MODIFY_PHONE_STATE"
-//        ).subscribe { granted ->
-//            if (granted) { // Always true pre-M
-//                "I can control the camera now".Log()
-//                try {
-//                    val tm = getSystemService(TELEPHONY_SERVICE) as TelephonyManager
-//                    val methodSet =
-//                        Class.forName(tm.javaClass.name)
-//                            .getDeclaredMethod("setDataEnabled", Boolean.TYPE)
-//                    methodSet.invoke(tm, true)
-//                } catch (e: Exception) {
-//                    e.message.Log(" e.message :...")
-//                }
-//
-//            } else {
-//                "Oups permission denied".Log()
-//            }
-//        }
+        
+        val wifi = WifiAdmin.getInstance()
+        " wifi?.wifiList :.. ${wifi?.wifiList} ".Log()
 
-//        val wifiManager = applicationContext.getSystemService(WIFI_SERVICE) as WifiManager
-//        //" ${wifiManager.wifiState} wifiManager.wifiState :...".Log()
-//        wifiManager.isWifiEnabled = false
-//        "${wifiManager.wifiState} wifiManager.wifiState :...".Log()
-        val wifi = WifiUtil(this@TestViewAct)
-        wifi.startScan()
-        wifi.getmWifiList()?.size?.Log(" wifi.getmWifiList() :...")
-        for (configuration in wifi.configurations!!) {
-            (
-                    "ssid:" + configuration.SSID + "--id:" + configuration.networkId +
-                            "--priority" + configuration.priority + "--allowedAuthAlgorithms:" + configuration.allowedAuthAlgorithms +
-                            "--allowedGroupCiphers:" + configuration.allowedGroupCiphers + "--allowedKeyManagement:" + configuration.allowedKeyManagement +
-                            "--allowedAuthAlgorithms:" + configuration.allowedAuthAlgorithms
-                            + "--allowedPairwiseCiphers:" + configuration.allowedPairwiseCiphers
-                            + "--hiddenSSID:" + configuration.hiddenSSID
-                            + "--wepTxKeyIndex:" + configuration.wepTxKeyIndex
-                            + "--wepKeys:" + configuration.wepKeys[0]
-                            + "--preSharedKey" + configuration.preSharedKey
-                            + "--status:" + configuration.status
-                    ).Log()
-        }
+
     }
 
     private fun bind() {
@@ -82,7 +46,6 @@ class TestViewAct : ProTodActivity() {
 
     @SuppressLint("CheckResult")
     private fun bindV2() {
-
 
         RxPermissions(this).request(
             "android.permission.KILL_BACKGROUND_PROCESSES"

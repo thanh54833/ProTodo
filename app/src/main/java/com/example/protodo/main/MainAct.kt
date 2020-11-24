@@ -16,6 +16,7 @@ import com.example.protodo.Shortcuts.ShortcutUtils
 import com.example.protodo.Test.TestViewAct
 import com.example.protodo.Utils.Log
 import com.example.protodo.abs.ProTodActivity
+import com.example.protodo.controlpanel.ControlPanelAct
 import com.example.protodo.databinding.ActivityMainBinding
 import com.example.protodo.editor.WriteAct
 import java.io.IOException
@@ -47,8 +48,9 @@ class MainAct : ProTodActivity() {
         //initLiquidPager()
         shortCut()
         //startActivity(WriteAct.getIntent(this@MainAct))
+        //startActivity(TestViewAct.getIntent(this@MainAct))
 
-        startActivity(TestViewAct.getIntent(this@MainAct))
+        startActivity(ControlPanelAct.getIntent(this@MainAct))
 
     }
 
