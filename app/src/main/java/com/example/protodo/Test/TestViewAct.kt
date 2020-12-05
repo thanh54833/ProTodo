@@ -2,16 +2,25 @@ package com.example.protodo.Test
 
 import android.annotation.SuppressLint
 import android.app.ActivityManager
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
+import android.media.RingtoneManager
+import android.os.Build
+import androidx.annotation.RequiresApi
+import androidx.core.app.NotificationCompat
 import androidx.databinding.DataBindingUtil
 import com.example.protodo.R
 import com.example.protodo.Utils.Log
 import com.example.protodo.abs.ProTodActivity
-import com.example.protodo.component.WifiAdmin
+import com.example.protodo.component.Notification
 import com.example.protodo.databinding.TestViewActBinding
+import com.example.protodo.main.MainAct
+import com.example.protodo.notification.MyNotifyService
 import com.example.protodo.palette.PaletteBottomView
 import com.example.protodo.permisstion.RxPermissions
 
@@ -19,21 +28,114 @@ import com.example.protodo.permisstion.RxPermissions
 class TestViewAct : ProTodActivity() {
     private lateinit var binding: TestViewActBinding
 
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP_MR1)
     override fun initiativeView() {
         binding = DataBindingUtil.setContentView(this@TestViewAct, R.layout.test_view_act)
         //bind()
         //bindV2()
+
+
         //Todo : tăt kêt nối internet ...
         bind3()
     }
 
-    @SuppressLint("CheckResult", "MissingPermission")
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP_MR1)
     private fun bind3() {
-        
-        val wifi = WifiAdmin.getInstance()
-        " wifi?.wifiList :.. ${wifi?.wifiList} ".Log()
+        "bind3 :... ".Log()
+
+        this@TestViewAct.packageName.Log("this@TestViewAct.packageName :...")
+
+//        val wifi = WifiAdmin.getInstance()
+//        " wifi?.wifiList :.. ${wifi?.wifiList} ".Log()
+//
+//        val gps = GpsUtils(this@TestViewAct)
+//
+//
+//        "can gps :... ${gps.canToggleGPS()} ".Log()
+//        gps.turnGPSOn()
+//        val intent = Intent("android.location.GPS_ENABLED_CHANGE")
+//        intent.putExtra("enabled", true)
+//        sendBroadcast(intent)
+
+        //Todo : thanh tao ra 1 cái thông báo :..
+
+        val intent = Intent(this@TestViewAct, MainAct::class.java)
+        showNotification(this@TestViewAct, "title", "message", intent, 1000)
 
 
+        //showNotification(this@TestViewAct, "title", "message", intent, 1000)
+        //showNotification(this@TestViewAct, "title", "message", intent, 1000)
+
+
+//        MainScope().launch {
+//            delay(5000)
+//            NotificationManagerCompat.from(this@TestViewAct).cancelAll()
+//            cancelNotification()
+//        }
+
+        Notification.checkNotificationServiceRunning(this@TestViewAct)
+
+        //NotificationManagerCompat.from(this@TestViewAct).areNotificationsEnabled().Log(" NotificationManagerCompat.from(this@TestViewAct).cancelAll() :....")
+
+        //MyNotifyService().cancelAllNotifications()
+        //NotificationManagerCompat.from(this@TestViewAct).cancelAll()
+
+
+        val intents = Intent()
+        intents.action = MyNotifyService.packageNames
+        intents.putExtra("block", "yes")
+        sendBroadcast(intent)
+
+
+    }
+
+
+    private fun showNotification(
+        context: Context,
+        title: String?,
+        message: String?,
+        intent: Intent?,
+        reqCode: Int
+    ) {
+        val pendingIntent =
+            PendingIntent.getActivity(context, reqCode, intent, PendingIntent.FLAG_ONE_SHOT)
+        val CHANNEL_ID = "channel_name" // The id of the channel.
+        val notificationBuilder: NotificationCompat.Builder =
+            NotificationCompat.Builder(context, CHANNEL_ID)
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setContentTitle(title)
+                .setContentText(message)
+                .setAutoCancel(true)
+                .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
+                .setContentIntent(pendingIntent)
+        val notificationManager =
+            context.getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val name: CharSequence = "Channel Name" // The user-visible name of the channel.
+            val importance = NotificationManager.IMPORTANCE_HIGH
+            val mChannel = NotificationChannel(CHANNEL_ID, name, importance)
+            notificationManager.createNotificationChannel(mChannel)
+        }
+        notificationManager.notify(
+            reqCode,
+            notificationBuilder.build()
+        ) // 0 is the request code, it should be unique id
+
+
+//        // Store each StatusBarNotification object
+//        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+//            cancelNotification(sbn.packageName, sbn.tag, sbn.id);
+//        } else {
+//            cancelNotification(sbn.key);
+//        }
+
+
+    }
+
+    private fun cancelNotification() {
+        val nMgr = applicationContext.getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+        nMgr.cancel(100)
+        nMgr.cancelAll()
     }
 
     private fun bind() {

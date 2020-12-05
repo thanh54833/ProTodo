@@ -21,7 +21,7 @@ import com.example.protodo.Utils.MediaPlayer
 import com.example.protodo.databinding.HolderBaseBinding
 import com.example.protodo.databinding.PaletteBottomViewBinding
 import com.example.protodo.recycleviewbase.HolderBase
-import com.example.protodo.recycleviewbase.setUpRecycleView
+import com.example.protodo.recycleviewbase.setContentView
 import java.util.*
 
 class PaletteBottomView @JvmOverloads constructor(
@@ -119,9 +119,10 @@ class PaletteBottomView @JvmOverloads constructor(
             itemColor44
         )
 
-        binding.recycleView.setUpRecycleView(
+        binding.recycleView.setContentView(
             listColor,
-            HolderBase(context, R.layout.holder_base), bind = { _binding, _itemData ->
+            HolderBase<HolderBaseBinding>(context, R.layout.holder_base),
+            bind = { _binding, _itemData ->
                 (_binding as? HolderBaseBinding)?.apply {
                     _binding.contentLayout.forEachIndexed { _index, it ->
                         (it as? FrameLayout)?.let { _FrameLayout ->
@@ -136,7 +137,7 @@ class PaletteBottomView @JvmOverloads constructor(
                                     //Todo : Thanh mơ âm thanh khi nhấn nut :...
                                     MediaPlayer(context).start()
 
-                                    val result = _itemData?.getOrNull(
+                                    val result = _itemData?.data?.getOrNull(
                                         _index
                                     )
 
@@ -148,14 +149,14 @@ class PaletteBottomView @JvmOverloads constructor(
                             }
                         }
                     }
-                    _itemData?.forEachIndexed { _index, _data ->
+                    _itemData?.data?.forEachIndexed { _index, _data ->
                         (_binding.contentLayout.getChildAt(_index) as? FrameLayout)?.let { _FrameLayout ->
                             (_FrameLayout.getChildAt(0) as? com.google.android.material.card.MaterialCardView)?.let { _image ->
                                 _image.visibility = View.VISIBLE
                                 _image.backgroundTintList =
                                     ColorStateList.valueOf(
                                         Color.parseColor(
-                                            _itemData.getOrNull(
+                                            _itemData.data?.getOrNull(
                                                 _index
                                             )
                                         )

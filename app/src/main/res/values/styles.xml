@@ -32,6 +32,25 @@
         <item name="android:textColorHint">@color/text_light</item>
     </style>
 
+    <style name="ProTodoTimePicker" parent="android:Widget.Material.Light.TimePicker">
+        <item name="android:timePickerMode">clock</item>
+        <item name="android:headerBackground">@color/black</item>
+        <item name="android:numbersTextColor">@color/primary</item>
+        <item name="android:numbersSelectorColor">@color/black</item>
+        <item name="android:numbersBackgroundColor">#ff555555</item>
+        <item name="android:textColor">@color/primary</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textAppearance">@style/ProTodo.TextView.Normal.TextView</item>
+
+        <item name="android:amPmTextColor">@color/black</item>
+        <item name="android:background">@color/transparent</item>
+        <item name="android:colorAccent">@color/divider</item>
+        <item name="android:textColorPrimary">@color/primary</item>
+        <item name="android:textColorSecondary">@color/dividerColor</item>
+
+    </style>
+
     <style name="ProTodo.TextView.Normal.TextView">
         <item name="android:paddingTop">10dp</item>
         <item name="android:paddingBottom">10dp</item>
@@ -40,7 +59,9 @@
     <style name="ProTodo.TextView.Normal.EditText">
         <item name="android:paddingTop">10dp</item>
         <item name="android:paddingBottom">10dp</item>
-        <item name="android:background">@color/transparent</item>
+        <item name="android:background">@null</item>
+        <item name="android:paddingStart">0dp</item>
+        <item name="android:paddingEnd">0dp</item>
     </style>
 
 
@@ -157,11 +178,23 @@
     <style name="ProTodoSwitchCompat">
         <item name="android:thumb">@drawable/switch_thumb</item>
         <item name="track">@drawable/switch_track</item>
-        <item name="showText">true</item>
-        <item name="android:textOn"></item>
-        <item name="android:textOff"></item>
         <item name="android:scaleX">0.8</item>
         <item name="android:scaleY">0.8</item>
+    </style>
+
+
+    <style name="ProTodoChip" parent="@style/Widget.MaterialComponents.Chip.Entry">
+        <!--        <item name="chipMinHeight">24dp</item>-->
+        <!--        <item name="chipIconSize">18dp</item>-->
+        <!--&lt;!&ndash;        <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Body2_Thin</item>&ndash;&gt;-->
+        <!--        <item name="closeIcon">@null</item>-->
+        <!--        <item name="checkedIcon">@null</item>-->
+        <!--        <item name="android:background">@drawable/ic_circle</item>-->
+    </style>
+
+    <style name="TextAppearance.MaterialComponents.Body2_Thin" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 
 

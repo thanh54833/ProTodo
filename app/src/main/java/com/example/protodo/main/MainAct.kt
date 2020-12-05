@@ -48,9 +48,11 @@ class MainAct : ProTodActivity() {
         //initLiquidPager()
         shortCut()
         //startActivity(WriteAct.getIntent(this@MainAct))
-        //startActivity(TestViewAct.getIntent(this@MainAct))
 
-        startActivity(ControlPanelAct.getIntent(this@MainAct))
+        //Todo : chay sang man hinh test !!
+        startActivity(TestViewAct.getIntent(this@MainAct))
+
+        //startActivity(ControlPanelAct.getIntent(this@MainAct))
 
     }
 
@@ -135,7 +137,7 @@ class MainAct : ProTodActivity() {
                     null
                 }
             } else {
-                MediaStore.Images.Media.getBitmap(this.contentResolver, imageSelected)
+                MediaStore.Images.Media.getBitmap(this.contentResolver, imageSelected ?: Uri.EMPTY)
             }
             bitmap
         } catch (e: IOException) {
