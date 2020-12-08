@@ -13,6 +13,7 @@ import android.net.wifi.WifiManager
 import android.text.Editable
 import android.text.Spannable
 import android.text.TextWatcher
+import android.text.style.ImageSpan
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -21,6 +22,7 @@ import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.PopupWindow
 import android.widget.RelativeLayout
+import androidx.appcompat.widget.AppCompatEditText
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.content.ContextCompat
@@ -31,6 +33,7 @@ import com.example.protodo.Utils.Log
 import com.example.protodo.abs.ProTodActivity
 import com.example.protodo.common.SizeUtils
 import com.example.protodo.common.SizeUtils.getViewHeight
+import com.example.protodo.component.ProTodoEditTextView
 import com.example.protodo.config.ConfigUtils
 import com.example.protodo.databinding.WriteActBinding
 import com.example.protodo.effect.AnimationUtils
@@ -40,7 +43,9 @@ import com.example.protodo.typeface.Font
 import com.example.protodo.typeface.TypefaceUtils
 import kotlinx.android.synthetic.main.expand_option_type.view.*
 import petrov.kristiyan.colorpicker.ColorPicker
+import java.lang.Exception
 import java.util.*
+import java.util.regex.Pattern
 
 
 class WriteAct : ProTodActivity() {
@@ -58,14 +63,11 @@ class WriteAct : ProTodActivity() {
         initAction()
         initKeyboard()
         handleContent()
-
         "turn off :... ".Log()
 
 //        val wifi: WifiManager =
 //            applicationContext.getSystemService(Context.WIFI_SERVICE) as WifiManager
 //        wifi.isWifiEnabled = false
-
-
 //        val wifiManager = baseContext.getSystemService(Context.WIFI_SERVICE) as WifiManager
 //        wifiManager.isWifiEnabled = true
 
@@ -268,7 +270,85 @@ class WriteAct : ProTodActivity() {
     }
 
     private fun initData() {
+
+        val content = "Press [img src=circle_1/] to accept or [img src=circle_2/] to retry"
+        setTextView(binding.contentTv, content)
+
+
     }
+
+    private val spannableFactory = Spannable.Factory.getInstance()
+    private fun setTextView(editText: AppCompatEditText, text: String) {
+        try {
+            "find error :...".Log()
+            val s = getTextWithImages(editText.context, text)
+            "find error :...".Log()
+            editText.setText(s)
+            "find error :...".Log()
+        } catch (e: Exception) {
+            "setTextView :.. ${e.message} ".Log()
+        }
+    }
+
+    private fun getTextWithImages(context: Context, text: CharSequence): Spannable {
+        "find error :...".Log()
+        val spannable = spannableFactory.newSpannable(text)
+        "find error :...".Log()
+        try {
+            "find error :...".Log()
+            addImages(context, spannable)
+        } catch (e: Exception) {
+            "getTextWithImages :... ${e.message} ".Log()
+        }
+        return spannable
+    }
+
+    private fun addImages(context: Context, spannable: Spannable): Boolean {
+        "find error :...".Log()
+        val refImg = Pattern.compile("\\Q[img src=\\E([a-zA-Z0-9_]+?)\\Q/]\\E")
+        "find error :...".Log()
+        var hasChanges = false
+        "find error :...".Log()
+        val matcher = refImg.matcher(spannable)
+        "find error :...".Log()
+        while (matcher.find()) {
+            "find error :...".Log()
+            var set = true
+            for (span in spannable.getSpans(
+                matcher.start(), matcher.end(),
+                ImageSpan::class.java
+            )) {
+                if (spannable.getSpanStart(span) >= matcher.start()
+                    && spannable.getSpanEnd(span) <= matcher.end()
+                ) {
+                    spannable.removeSpan(span)
+                } else {
+                    set = false
+                    break
+                }
+            }
+            "find error :...".Log()
+            val resname = spannable.subSequence(matcher.start(1), matcher.end(1)).toString()
+                .trim { it <= ' ' }
+            val id = context.resources.getIdentifier(resname, "drawable", context.packageName)
+
+            id.Log("id:...")
+            "find error :...".Log()
+            if (set) {
+                hasChanges = true
+                spannable.setSpan(
+                    ImageSpan(context, id),
+                    matcher.start(),
+                    matcher.end(),
+                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                )
+            }
+            "find error :...".Log()
+        }
+        "find error :...".Log()
+        return hasChanges
+    }
+
 
     private fun initView() {
     }
@@ -446,7 +526,6 @@ class WriteAct : ProTodActivity() {
 
         }
 
-
         binding.moreBt.setOnClickListener {
             expandView = View.inflate(this@WriteAct, R.layout.expand_option_type, null).apply {
                 layoutParams = LinearLayout.LayoutParams(
@@ -485,8 +564,8 @@ class WriteAct : ProTodActivity() {
             }
         }
 
-
     }
+
 
     private fun AppCompatImageView.handleBgBt() {
         backgroundTintList = if (isSelected) {

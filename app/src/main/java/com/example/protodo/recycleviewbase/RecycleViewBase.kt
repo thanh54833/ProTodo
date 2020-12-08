@@ -8,39 +8,43 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.protodo.R
-
 
 class ItemInfo<T : Any>(
     var position: Int? = null,
     var data: T? = null
 )
 
-fun <T : Any, VDB : ViewDataBinding> RecyclerView.setContentView(
-    listData: List<T>,
-    holder: HolderBase<VDB>,
-    bind: (binding: VDB?, itemInfo: ItemInfo<T>?) -> Unit = { _, _ -> }
-) {
-    this.adapter = RecycleViewBase(listData, holder, bind)
-    this.layoutManager = LinearLayoutManager(context)
-    this.itemAnimator = null
+interface HolderBaseListener {
 }
 
-class RecycleViewBase<T : Any, VDB : ViewDataBinding>(
+fun <T : Any, VDB : ViewDataBinding, I : Any?> RecyclerView.setContentView(
+    listData: List<T>,
+    holder: HolderBase<VDB, I>,
+    bind: (binding: VDB, itemInfo: ItemInfo<T>?, listener: I?) -> Unit = { _, _, _ -> }
+): RecyclerView.Adapter<HolderBase<VDB, I>> {
+    val recycleViewAdapter = RecycleViewBase(listData, holder, bind)
+    this.adapter = recycleViewAdapter
+    this.layoutManager = LinearLayoutManager(context)
+    this.itemAnimator = null
+    return recycleViewAdapter
+}
+
+class RecycleViewBase<T : Any, VDB : ViewDataBinding, I : Any?>(
     var list: List<T>,
-    var holder: HolderBase<VDB>,
-    var binds: (binding: VDB?, itemInfo: ItemInfo<T>?) -> Unit
-) : RecyclerView.Adapter<HolderBase<VDB>>() {
-    override fun onBindViewHolder(holder: HolderBase<VDB>, position: Int) {
+    var holder: HolderBase<VDB, I>,
+    var binds: (binding: VDB, itemInfo: ItemInfo<T>?, interact: I?) -> Unit
+) : RecyclerView.Adapter<HolderBase<VDB, I>>() {
+    //var listener: I? = null
+    override fun onBindViewHolder(holder: HolderBase<VDB, I>, position: Int) {
         holder.apply {
             val itemInfo = ItemInfo(position = position, data = list.getOrNull(position))
-            bind {
-                binds(it, itemInfo)
+            bind { _binding, _listener ->
+                binds(_binding, itemInfo, _listener)
             }
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HolderBase<VDB> {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HolderBase<VDB, I> {
         return holder.onCreateViewHolder(parent)
     }
 
@@ -49,19 +53,22 @@ class RecycleViewBase<T : Any, VDB : ViewDataBinding>(
     }
 }
 
-class HolderBase<VDB : ViewDataBinding>(
+class HolderBase<VDB : ViewDataBinding, I : Any?>(
     var context: Context,
-    var layoutId: Int
+    var layoutId: Int,
+    var listener: I? = null
 ) :
     RecyclerView.ViewHolder(getView(context, layoutId)) {
-    fun onCreateViewHolder(parent: ViewGroup): HolderBase<VDB> {
-        return HolderBase(parent.context, layoutId)
+    fun onCreateViewHolder(parent: ViewGroup): HolderBase<VDB, I> {
+        return HolderBase(parent.context, layoutId, listener)
     }
 
-    fun bind(action: (binding: VDB?) -> Unit) {
+    fun bind(action: (binding: VDB, listener: I?) -> Unit) {
         val binding: VDB? = DataBindingUtil.bind(itemView)
-        binding?.apply {
-            action(this)
+        binding?.let { _binding ->
+            listener?.let { _listener ->
+                action(_binding, _listener)
+            }
         }
         binding?.executePendingBindings()
     }
@@ -75,5 +82,4 @@ fun getView(context: Context, layoutId: Int): View {
         )
     }!!
 }
-
 

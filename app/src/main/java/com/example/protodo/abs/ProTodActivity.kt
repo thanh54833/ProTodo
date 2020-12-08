@@ -1,8 +1,12 @@
 package com.example.protodo.abs
 
+import android.R
+import android.graphics.Color
 import android.graphics.Rect
 import android.os.Bundle
 import android.view.ViewTreeObserver
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.protodo.Utils.Log
 import com.example.protodo.common.KeyBoardModel
@@ -52,6 +56,14 @@ abstract class ProTodActivity : AppCompatActivity() {
     }
 
     abstract fun initiativeView()
+
+
+    fun String.toast(color: Int = Color.RED) {
+        val toast: Toast = Toast.makeText(baseContext, this, Toast.LENGTH_SHORT)
+        val v: TextView = toast.view?.findViewById(R.id.message) as TextView
+        v.setTextColor(color)
+        toast.show()
+    }
 
     companion object {
         fun getIntent() {

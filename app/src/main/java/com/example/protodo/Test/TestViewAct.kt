@@ -1,5 +1,6 @@
 package com.example.protodo.Test
 
+import android.Manifest
 import android.annotation.SuppressLint
 import android.app.ActivityManager
 import android.app.NotificationChannel
@@ -10,8 +11,10 @@ import android.content.Intent
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
 import android.media.RingtoneManager
+import android.net.wifi.WifiManager
 import android.os.Build
 import androidx.annotation.RequiresApi
+import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.databinding.DataBindingUtil
 import com.example.protodo.R
@@ -31,24 +34,48 @@ class TestViewAct : ProTodActivity() {
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP_MR1)
     override fun initiativeView() {
         binding = DataBindingUtil.setContentView(this@TestViewAct, R.layout.test_view_act)
+
         //bind()
         //bindV2()
 
-
         //Todo : tăt kêt nối internet ...
-        bind3()
+        // Todo : xóa thông báo ...
+        //bind3()
+        //
+
+        //bind4()
+        //Todo : thanh test kill app :..
+        bindV2()
     }
+
+    private fun bind4() {
+        "bind 4 :...".Log()
+        val wifiManager = applicationContext.getSystemService(WIFI_SERVICE) as WifiManager
+        if (ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            "ACCESS_FINE_LOCATION :...".Log()
+            //wifiManager.configuredNetworks.size.Log("wifiManager.configuredNetworks.size :...")
+            //wifiManager.connectionInfo.Log("wifiManager.connectionInfo :...")
+            //"wifiManager.connectionInfo :.. ${wifiManager.connectionInfo} ".Log()
+
+            wifiManager.isWifiEnabled = false
+            wifiManager.isWifiEnabled.Log("wifiManager.isWifiEnabled :...")
+        }
+    }
+
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP_MR1)
     private fun bind3() {
         "bind3 :... ".Log()
-
         this@TestViewAct.packageName.Log("this@TestViewAct.packageName :...")
 
 //        val wifi = WifiAdmin.getInstance()
 //        " wifi?.wifiList :.. ${wifi?.wifiList} ".Log()
 //
-//        val gps = GpsUtils(this@TestViewAct)
+//        val gps = GpsUtils(this@TestViewAct
 //
 //
 //        "can gps :... ${gps.canToggleGPS()} ".Log()
@@ -120,16 +147,6 @@ class TestViewAct : ProTodActivity() {
             reqCode,
             notificationBuilder.build()
         ) // 0 is the request code, it should be unique id
-
-
-//        // Store each StatusBarNotification object
-//        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
-//            cancelNotification(sbn.packageName, sbn.tag, sbn.id);
-//        } else {
-//            cancelNotification(sbn.key);
-//        }
-
-
     }
 
     private fun cancelNotification() {
@@ -153,22 +170,25 @@ class TestViewAct : ProTodActivity() {
             "android.permission.KILL_BACKGROUND_PROCESSES"
         ).subscribe { granted ->
             if (granted) { // Always true pre-M
-                "I can control the camera now".Log()
+                "I can control the camera now :...".Log()
 
                 val actvityManager = this.getSystemService(ACTIVITY_SERVICE) as ActivityManager
                 val procInfos = actvityManager.runningAppProcesses
 
+                procInfos.size.Log(" procInfos.size:...")
+                procInfos.forEach { _item ->
+
+                    actvityManager.killBackgroundProcesses(_item.processName.Log("_item.processName :..."))
+
+                }
                 actvityManager.killBackgroundProcesses("com.android.chrome")
                 actvityManager.killBackgroundProcesses("com.google.chromeremotedesktop")
-
                 for (runningProInfo in procInfos) {
 //                    "find error :... ${runningProInfo.processName}".Log()
 //                    if (runningProInfo.processName == ) {
 //                        "find error :...".Log()
 //                    }
                 }
-
-
             } else {
                 "Oups permission denied".Log()
             }

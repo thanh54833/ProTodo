@@ -119,10 +119,11 @@ class PaletteBottomView @JvmOverloads constructor(
             itemColor44
         )
 
+
         binding.recycleView.setContentView(
             listColor,
-            HolderBase<HolderBaseBinding>(context, R.layout.holder_base),
-            bind = { _binding, _itemData ->
+            HolderBase<HolderBaseBinding, ss>(context, R.layout.holder_base),
+            bind = { _binding, _itemData, _ ->
                 (_binding as? HolderBaseBinding)?.apply {
                     _binding.contentLayout.forEachIndexed { _index, it ->
                         (it as? FrameLayout)?.let { _FrameLayout ->
@@ -166,6 +167,10 @@ class PaletteBottomView @JvmOverloads constructor(
                     }
                 }
             })
+    }
+
+    interface ss {
+
     }
 }
 

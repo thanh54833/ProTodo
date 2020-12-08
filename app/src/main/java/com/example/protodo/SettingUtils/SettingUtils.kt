@@ -45,11 +45,11 @@ class SettingUtils(var context: Context) {
                     if (ri.activityInfo.labelRes != 0) {
                         name = res.getResourcePackageName(ri.activityInfo.labelRes)
                         componentList.add(name)
-                        "package name :... $name".Log()
+                        //"package name :... $name".Log()
                     } else {
                         name = ri.activityInfo.applicationInfo.packageName
                         componentList.add(name)
-                        "package name :... $name".Log()
+                        //"package name :... $name".Log()
                     }
 
 //                    if (appInForeground()) {

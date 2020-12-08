@@ -47,11 +47,11 @@ class MainAct : ProTodActivity() {
 
         //initLiquidPager()
         shortCut()
-        //startActivity(WriteAct.getIntent(this@MainAct))
+
+        startActivity(WriteAct.getIntent(this@MainAct))
 
         //Todo : chay sang man hinh test !!
-        startActivity(TestViewAct.getIntent(this@MainAct))
-
+        //startActivity(TestViewAct.getIntent(this@MainAct))
         //startActivity(ControlPanelAct.getIntent(this@MainAct))
 
     }
@@ -116,7 +116,6 @@ class MainAct : ProTodActivity() {
             //getStringExtra(Intent.EXTRA_STREAM).Log("getStringExtra(Intent.EXTRA_STREAM)")
             //getStringArrayExtra(Intent.EXTRA_STREAM).Log("getStringExtra(Intent.EXTRA_STREAM)")
             //getStringArrayListExtra(Intent.EXTRA_STREAM).Log("getStringExtra(Intent.EXTRA_STREAM)")
-
             binding.actionImage.setImageBitmap(getPath(this))
 
         }

@@ -8,6 +8,9 @@
         android:background="@color/white"
         android:orientation="vertical">
 
+        <com.example.protodo.notification.view.NotificationView
+            android:layout_width="match_parent"
+            android:layout_height="500dp" />
 
     </LinearLayout>
 </layout>

@@ -141,6 +141,19 @@
             android:exported="true"
             android:launchMode="singleTop"
             android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".example.service.LocalWordAct"
+            android:configChanges="orientation|screenSize"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustPan" />
+
+        <activity
+            android:name=".example.exercise.alarm.AlarmAct"
+            android:configChanges="orientation|screenSize"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustPan" />
 
 
         <receiver android:name=".example.service.MyPhoneReceiver">
@@ -156,6 +169,14 @@
         </receiver>
 
         <service android:name=".example.service.ExampleService" />
+
+        <service
+            android:name=".example.service.LocalWordService"
+            android:label="Word service" />
+
+        <service
+            android:name=".example.exercise.alarm.AlarmService"
+            android:label="Word service" />
 
     </application>
 </manifest>
