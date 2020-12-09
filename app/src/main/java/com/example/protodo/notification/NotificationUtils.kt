@@ -80,6 +80,7 @@ object NotificationUtils {
             notificationChannel.enableVibration(true)
             notificationManager.createNotificationChannel(notificationChannel)
         }
+
         val notificationBuilder: NotificationCompat.Builder =
             NotificationCompat.Builder(context, NOTIFICATION_CHANNEL_ID)
         val contentView = RemoteViews(context.packageName, R.layout.notification_view)
@@ -88,7 +89,6 @@ object NotificationUtils {
             R.id.content_tv,
             "YAY ! You can do some Magic now ! Start using your Magic Mouse !"
         )
-
 
         contentView.setOnClickPendingIntent(R.id.done_bt, getPendingSelfIntent(context, ""))
         notificationBuilder

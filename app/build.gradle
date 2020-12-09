@@ -81,4 +81,7 @@ dependencies {
     //https://github.com/kristiyanP/colorpicker
     implementation 'petrov.kristiyan:colorpicker-library:1.1.10'
 
+
+    //
+    implementation 'com.fxn769:bubbletabbar:1.0.5'
 }

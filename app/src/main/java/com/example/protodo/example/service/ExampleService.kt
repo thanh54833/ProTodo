@@ -12,8 +12,7 @@ class ExampleService : Service() {
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         "onStartCommand() :... ".Log()
-
-
+        
         return super.onStartCommand(intent, flags, startId)
     }
 }

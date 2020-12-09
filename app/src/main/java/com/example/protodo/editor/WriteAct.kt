@@ -33,7 +33,6 @@ import com.example.protodo.Utils.Log
 import com.example.protodo.abs.ProTodActivity
 import com.example.protodo.common.SizeUtils
 import com.example.protodo.common.SizeUtils.getViewHeight
-import com.example.protodo.component.ProTodoEditTextView
 import com.example.protodo.config.ConfigUtils
 import com.example.protodo.databinding.WriteActBinding
 import com.example.protodo.effect.AnimationUtils
@@ -43,7 +42,6 @@ import com.example.protodo.typeface.Font
 import com.example.protodo.typeface.TypefaceUtils
 import kotlinx.android.synthetic.main.expand_option_type.view.*
 import petrov.kristiyan.colorpicker.ColorPicker
-import java.lang.Exception
 import java.util.*
 import java.util.regex.Pattern
 
@@ -271,8 +269,8 @@ class WriteAct : ProTodActivity() {
 
     private fun initData() {
 
-        val content = "Press [img src=circle_1/] to accept or [img src=circle_2/] to retry"
-        setTextView(binding.contentTv, content)
+        //val content = "Press [img src=circle_1/] to accept or [img src=circle_2/] to retry"
+        //setTextView(binding.contentTv, content)
 
 
     }
@@ -565,7 +563,6 @@ class WriteAct : ProTodActivity() {
         }
 
     }
-
 
     private fun AppCompatImageView.handleBgBt() {
         backgroundTintList = if (isSelected) {

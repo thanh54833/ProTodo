@@ -108,11 +108,12 @@ class TestViewAct : ProTodActivity() {
         //NotificationManagerCompat.from(this@TestViewAct).cancelAll()
 
 
-        val intents = Intent()
+        val intents = Intent(this@TestViewAct, MyNotifyService::class.java)
+        //val intents = Intent()
         intents.action = MyNotifyService.packageNames
         intents.putExtra("block", "yes")
         sendBroadcast(intent)
-
+        startService(intents)
 
     }
 

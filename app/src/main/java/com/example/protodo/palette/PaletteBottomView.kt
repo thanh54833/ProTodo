@@ -20,8 +20,8 @@ import com.example.protodo.Utils.Log
 import com.example.protodo.Utils.MediaPlayer
 import com.example.protodo.databinding.HolderBaseBinding
 import com.example.protodo.databinding.PaletteBottomViewBinding
-import com.example.protodo.recycleviewbase.HolderBase
-import com.example.protodo.recycleviewbase.setContentView
+import com.halo.widget.recycle.HolderBase
+import com.halo.widget.recycle.setContentView
 import java.util.*
 
 class PaletteBottomView @JvmOverloads constructor(
@@ -122,7 +122,9 @@ class PaletteBottomView @JvmOverloads constructor(
 
         binding.recycleView.setContentView(
             listColor,
-            HolderBase<HolderBaseBinding, ss>(context, R.layout.holder_base),
+            HolderBase<HolderBaseBinding, ss>(context, R.layout.holder_base, object : ss {
+
+            }),
             bind = { _binding, _itemData, _ ->
                 (_binding as? HolderBaseBinding)?.apply {
                     _binding.contentLayout.forEachIndexed { _index, it ->

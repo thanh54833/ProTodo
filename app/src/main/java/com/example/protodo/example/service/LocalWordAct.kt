@@ -19,10 +19,9 @@ class LocalWordAct : ProTodActivity(), ServiceConnection {
     override fun initiativeView() {
         "initiativeView :...".Log()
 
-        "service?.resultList :... ${service?.resultList} ".Log()
         val service = Intent(applicationContext, LocalWordService::class.java)
         applicationContext.startService(service)
-
+        "service?.resultList :... ${this@LocalWordAct.service?.resultList} ".Log()
 
     }
 

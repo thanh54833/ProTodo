@@ -1,0 +1,26 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/home"
+        android:checked="true"
+        android:icon="@drawable/ic_home"
+        android:iconTint="@color/home"
+        android:title="Home" />
+    <item
+        android:id="@+id/log"
+        android:icon="@drawable/ic_clock"
+        android:iconTint="@color/logger"
+        android:title="Logger" />
+
+    <item
+        android:id="@+id/file"
+        android:icon="@drawable/ic_file_v2"
+        android:iconTint="@color/carbon_amber_a700"
+        android:title="Documnet" />
+
+    <item
+        android:id="@+id/setting"
+        android:icon="@drawable/ic_settings"
+        android:iconTint="@color/carbon_bluegrey_400"
+        android:title="Setting" />
+
+</menu>

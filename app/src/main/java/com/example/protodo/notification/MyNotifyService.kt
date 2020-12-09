@@ -27,8 +27,6 @@ class MyNotifyService : NotificationListenerService() {
 //        val title = sbn?.notification?.extras?.getString("android.title")
 //        val text = sbn?.notification?.extras?.getString("android.text")
 //        val package_name = sbn?.packageName
-//
-//
 //        ("Notification title is:$title").Log()
 //        ("Notification text is:$text").Log()
 //        ("Notification Package Name is:$package_name").Log()
@@ -44,7 +42,6 @@ class MyNotifyService : NotificationListenerService() {
         super.onNotificationRemoved(sbn)
         //Todo :thanh lấy ra danh sách notification đã xem :...
         check.Log("check :...")
-
     }
 
     override fun onStartCommand(intent: Intent, flags: Int, startId: Int): Int {

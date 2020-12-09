@@ -4,10 +4,13 @@ import android.R
 import android.graphics.Color
 import android.graphics.Rect
 import android.os.Bundle
+import android.view.View
 import android.view.ViewTreeObserver
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.databinding.ViewDataBinding
 import com.example.protodo.Utils.Log
 import com.example.protodo.common.KeyBoardModel
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent
@@ -19,11 +22,21 @@ abstract class ProTodActivity : AppCompatActivity() {
     private var callBack: ViewTreeObserver.OnGlobalLayoutListener? = null
     private var heightOld: Int? = null
     lateinit var keyBoardActListener: (width: Int, height: Int, isVisible: Boolean) -> Unit
+    //lateinit var binding: ViewDataBinding
 
     override fun onCreate(
         savedInstanceState: Bundle?
     ) {
         super.onCreate(savedInstanceState)
+        //Todo : check available content view ...
+
+//        this.findViewById<View>(R.id.content).rootView.setBackgroundColor(
+//            ContextCompat.getColor(
+//                this,
+//                R.color.white
+//            )
+//        )
+
         initiativeView()
         if (this::keyBoardActListener.isInitialized) {
             KeyboardVisibilityEvent.setEventListener(this,
@@ -56,7 +69,6 @@ abstract class ProTodActivity : AppCompatActivity() {
     }
 
     abstract fun initiativeView()
-
 
     fun String.toast(color: Int = Color.RED) {
         val toast: Toast = Toast.makeText(baseContext, this, Toast.LENGTH_SHORT)
