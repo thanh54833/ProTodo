@@ -132,11 +132,10 @@
                                                 android:textStyle="bold" />
 
                                             <androidx.appcompat.widget.AppCompatImageView
-                                                android:layout_width="35dp"
-                                                android:layout_height="35dp"
-                                                android:layout_marginEnd="2dp"
-                                                android:layout_marginBottom="2dp"
-                                                android:background="@drawable/ic_add" />
+                                                android:layout_width="37dp"
+                                                android:layout_height="37dp"
+                                                android:padding="2dp"
+                                                android:src="@drawable/ic_add" />
 
                                         </LinearLayout>
                                     </LinearLayout>
@@ -231,11 +230,10 @@
                                                 android:textStyle="bold" />
 
                                             <androidx.appcompat.widget.AppCompatImageView
-                                                android:layout_width="35dp"
-                                                android:layout_height="35dp"
-                                                android:layout_marginEnd="2dp"
-                                                android:layout_marginBottom="2dp"
-                                                android:background="@drawable/ic_add" />
+                                                android:layout_width="37dp"
+                                                android:layout_height="37dp"
+                                                android:padding="2dp"
+                                                android:src="@drawable/ic_add" />
 
                                         </LinearLayout>
                                     </LinearLayout>
@@ -329,12 +327,10 @@
                                                 android:textStyle="bold" />
 
                                             <androidx.appcompat.widget.AppCompatImageView
-                                                android:layout_width="35dp"
-                                                android:layout_height="35dp"
-                                                android:layout_marginEnd="2dp"
-                                                android:layout_marginBottom="2dp"
-                                                android:background="@drawable/ic_add" />
-
+                                                android:layout_width="37dp"
+                                                android:layout_height="37dp"
+                                                android:padding="2dp"
+                                                android:src="@drawable/ic_add" />
                                         </LinearLayout>
                                     </LinearLayout>
                                 </LinearLayout>
@@ -395,15 +391,12 @@
                                         android:paddingStart="8dp"
                                         android:paddingEnd="0dp">
 
-                                        <androidx.appcompat.widget.AppCompatTextView
-                                            android:layout_width="45dp"
-                                            android:layout_height="45dp"
-                                            android:background="@drawable/ic_today"
+                                        <androidx.appcompat.widget.AppCompatImageView
+                                            android:layout_width="52dp"
+                                            android:layout_height="52dp"
+                                            android:background="@drawable/ic_device"
                                             android:gravity="center"
-                                            android:paddingTop="8dp"
-                                            android:text="0 9"
                                             android:textColor="@color/white"
-                                            android:textSize="16dp"
                                             android:textStyle="bold" />
 
                                         <LinearLayout
@@ -428,19 +421,16 @@
                                                 android:textStyle="bold" />
 
                                             <androidx.appcompat.widget.AppCompatImageView
-                                                android:layout_width="35dp"
-                                                android:layout_height="35dp"
-                                                android:layout_marginEnd="2dp"
-                                                android:layout_marginBottom="2dp"
-                                                android:background="@drawable/ic_add" />
+                                                android:layout_width="37dp"
+                                                android:layout_height="37dp"
+                                                android:padding="2dp"
+                                                android:src="@drawable/ic_add" />
 
                                         </LinearLayout>
                                     </LinearLayout>
                                 </LinearLayout>
                             </com.google.android.material.card.MaterialCardView>
-
                         </LinearLayout>
-
                     </LinearLayout>
 
                     <androidx.appcompat.widget.AppCompatTextView
