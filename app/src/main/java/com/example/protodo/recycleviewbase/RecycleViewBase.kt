@@ -26,18 +26,19 @@ enum class RecycleViewAnimation {
     NONE, DOWN_TO_UP, UP_TO_DOWN, RIGHT_TO_LEFT, LEFT_TO_RIGHT
 }
 
+enum class RecycleViewMode {
+    VERTICAL, HORIZONTAL, GRIP
+}
+
 fun <T : Any, VDB : ViewDataBinding, I : Any?> RecyclerView.setContentView(
     listData: List<T>,
     holder: HolderBase<VDB, I>,
-    item: Int? = 0,
+    anim: RecycleViewAnimation? = RecycleViewAnimation.NONE,
+    mode: RecycleViewMode? = RecycleViewMode.VERTICAL,
     bind: (binding: VDB, itemInfo: ItemInfo<T>?, listener: I?) -> Unit = { _, _, _ -> }
 ): RecyclerView.Adapter<HolderBase<VDB, I>> {
+    //var animation: Animation? = null
     val recycleViewAdapter = RecycleViewBase(listData, holder, bind)
-    this.adapter = recycleViewAdapter
-    this.layoutManager = LinearLayoutManager(context)
-    this.itemAnimator = null
-
-    val anim: RecycleViewAnimation? = RecycleViewAnimation.DOWN_TO_UP
 
     when (anim) {
         RecycleViewAnimation.NONE -> {
@@ -45,32 +46,39 @@ fun <T : Any, VDB : ViewDataBinding, I : Any?> RecyclerView.setContentView(
         }
         RecycleViewAnimation.DOWN_TO_UP -> {
             val resId: Int = R.anim.layout_animation_down_to_up
-            val animation: LayoutAnimationController =
-                AnimationUtils.loadLayoutAnimation(context, resId)
-            this.layoutAnimation = animation
+            this.layoutAnimation = AnimationUtils.loadLayoutAnimation(context, resId)
+            //recycleViewAdapter.animationItem = AnimationUtils.loadAnimation(context, resId)
         }
         RecycleViewAnimation.UP_TO_DOWN -> {
             val resId: Int = R.anim.layout_animation_up_to_down
-            val animation: LayoutAnimationController =
-                AnimationUtils.loadLayoutAnimation(context, resId)
-            this.layoutAnimation = animation
+            this.layoutAnimation = AnimationUtils.loadLayoutAnimation(context, resId)
+            //recycleViewAdapter.animationItem = AnimationUtils.loadAnimation(context, resId)
         }
         RecycleViewAnimation.RIGHT_TO_LEFT -> {
             val resId: Int = R.anim.layout_animation_right_to_left
-            val animation: LayoutAnimationController =
-                AnimationUtils.loadLayoutAnimation(context, resId)
-            this.layoutAnimation = animation
+            this.layoutAnimation = AnimationUtils.loadLayoutAnimation(context, resId)
+            //recycleViewAdapter.animationItem = AnimationUtils.loadAnimation(context, resId)
         }
         RecycleViewAnimation.LEFT_TO_RIGHT -> {
             val resId: Int = R.anim.layout_animation_left_to_right
-            val animation: LayoutAnimationController =
-                AnimationUtils.loadLayoutAnimation(context, resId)
-            this.layoutAnimation = animation
+            this.layoutAnimation = AnimationUtils.loadLayoutAnimation(context, resId)
+            //recycleViewAdapter.animationItem = AnimationUtils.loadAnimation(context, resId)
         }
     }
+    this.adapter = recycleViewAdapter
+    this.itemAnimator = null
 
+    when (mode) {
+        RecycleViewMode.VERTICAL -> {
+            this.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        }
+        RecycleViewMode.HORIZONTAL -> {
+            this.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        }
+        RecycleViewMode.GRIP -> {
 
-
+        }
+    }
     return recycleViewAdapter
 }
 
@@ -80,6 +88,7 @@ class RecycleViewBase<T : Any, VDB : ViewDataBinding, I : Any?>(
     var binds: (binding: VDB, itemInfo: ItemInfo<T>?, interact: I?) -> Unit
 ) : RecyclerView.Adapter<HolderBase<VDB, I>>() {
     private var lastPosition = -1
+    var animationItem: Animation? = null
 
     //var listener: I? = null
     override fun onBindViewHolder(holder: HolderBase<VDB, I>, position: Int) {
@@ -89,7 +98,9 @@ class RecycleViewBase<T : Any, VDB : ViewDataBinding, I : Any?>(
                 binds(_binding, itemInfo, _listener)
             }
         }
-        //setAnimation(holder.itemView, position)
+        //animationItem?.apply {
+        setAnimation(holder.itemView, position)
+        //}
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HolderBase<VDB, I> {
@@ -101,9 +112,13 @@ class RecycleViewBase<T : Any, VDB : ViewDataBinding, I : Any?>(
     }
 
     // animation fade ...
-    private fun setAnimation(viewToAnimate: View, position: Int) {
+    private fun setAnimation(
+        viewToAnimate: View,
+        position: Int
+    ) {
         // If the bound view wasn't previously displayed on screen, it's animated
-        if (position > lastPosition) {
+        if ((position > lastPosition)) {//and (animationItem != null)
+            // Todo : animation scale ...
             val anim = ScaleAnimation(
                 0.0f,
                 1.0f,
@@ -116,7 +131,14 @@ class RecycleViewBase<T : Any, VDB : ViewDataBinding, I : Any?>(
             )
             anim.duration = Random().nextInt(501).toLong()
             //to make duration random number between [0,501)
-            viewToAnimate.startAnimation(anim)
+            //Todo :
+
+//            val ss = AnimationUtils.loadAnimation(
+//                viewToAnimate.context,
+//                R.anim.layout_animation_down_to_up
+//            )
+
+            viewToAnimate.startAnimation(anim)//animationItem)
             lastPosition = position
         }
     }

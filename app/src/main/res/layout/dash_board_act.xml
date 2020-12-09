@@ -29,12 +29,439 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/ProTodo.TextView.Normal.TextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="15dp"
+                        android:paddingStart="5dp"
+                        android:text="Pro Todo"
+                        android:textColor="@color/black"
+                        android:textSize="25sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:layout_width="0dp"
+                                android:layout_height="180dp"
+                                android:layout_marginStart="10dp"
+                                android:layout_weight="1"
+                                android:backgroundTint="#DE350B"
+                                android:elevation="2dp"
+                                android:padding="5dp"
+                                app:cardCornerRadius="10dp"
+                                app:cardElevation="3dp"
+                                app:cardUseCompatPadding="true">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="vertical">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:paddingTop="5dp">
+
+                                        <androidx.appcompat.widget.AppCompatTextView
+                                            style="@style/ProTodo.TextView.Normal.TextView"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="8dp"
+                                            android:layout_weight="1"
+                                            android:paddingTop="0dp"
+                                            android:paddingBottom="25dp"
+                                            android:text="Hoạt động"
+                                            android:textColor="@color/white"
+                                            android:textSize="16sp"
+                                            android:textStyle="bold" />
+
+                                        <androidx.appcompat.widget.SwitchCompat
+                                            style="@style/ProTodoSwitchCompat.Red"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="10dp"
+                                            android:layout_marginEnd="-8dp"
+                                            android:rotation="90" />
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_gravity="center"
+                                        android:gravity="bottom|start"
+                                        android:orientation="vertical"
+                                        android:paddingStart="8dp"
+                                        android:paddingEnd="0dp">
+
+                                        <androidx.appcompat.widget.AppCompatImageView
+                                            android:layout_width="45dp"
+                                            android:layout_height="45dp"
+                                            android:background="@drawable/ic_inbox" />
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:layout_marginTop="10dp"
+                                            android:layout_marginBottom="0dp"
+                                            android:gravity="center">
+
+                                            <androidx.appcompat.widget.AppCompatTextView
+                                                style="@style/ProTodo.TextView.Normal.TextView"
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="1"
+                                                android:gravity="center|start"
+                                                android:paddingTop="0dp"
+                                                android:paddingBottom="0dp"
+                                                android:text="Hộp thư đến"
+                                                android:textColor="@color/white"
+                                                android:textSize="16sp"
+                                                android:textStyle="bold" />
+
+                                            <androidx.appcompat.widget.AppCompatImageView
+                                                android:layout_width="35dp"
+                                                android:layout_height="35dp"
+                                                android:layout_marginEnd="2dp"
+                                                android:layout_marginBottom="2dp"
+                                                android:background="@drawable/ic_add" />
+
+                                        </LinearLayout>
+                                    </LinearLayout>
+                                </LinearLayout>
+                            </com.google.android.material.card.MaterialCardView>
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:layout_width="0dp"
+                                android:layout_height="180dp"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginEnd="10dp"
+                                android:layout_weight="1"
+                                android:backgroundTint="#344563"
+                                android:elevation="2dp"
+                                android:padding="5dp"
+                                app:cardCornerRadius="10dp"
+                                app:cardElevation="3dp"
+                                app:cardUseCompatPadding="true">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="vertical">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:paddingTop="5dp">
+
+                                        <androidx.appcompat.widget.AppCompatTextView
+                                            style="@style/ProTodo.TextView.Normal.TextView"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="8dp"
+                                            android:layout_weight="1"
+                                            android:paddingTop="0dp"
+                                            android:paddingBottom="25dp"
+                                            android:text="Hoạt động"
+                                            android:textColor="@color/white"
+                                            android:textSize="16sp"
+                                            android:textStyle="bold" />
+
+                                        <androidx.appcompat.widget.SwitchCompat
+                                            style="@style/ProTodoSwitchCompat.Dark"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="10dp"
+                                            android:layout_marginEnd="-8dp"
+                                            android:rotation="90" />
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_gravity="center"
+                                        android:gravity="bottom|start"
+                                        android:orientation="vertical"
+                                        android:paddingStart="8dp"
+                                        android:paddingEnd="0dp">
+
+                                        <androidx.appcompat.widget.AppCompatTextView
+                                            android:layout_width="45dp"
+                                            android:layout_height="45dp"
+                                            android:background="@drawable/ic_today"
+                                            android:gravity="center"
+                                            android:paddingTop="8dp"
+                                            android:text="0 9"
+                                            android:textColor="@color/white"
+                                            android:textSize="16dp"
+                                            android:textStyle="bold" />
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:layout_marginTop="10dp"
+                                            android:layout_marginBottom="0dp"
+                                            android:gravity="center">
+
+                                            <androidx.appcompat.widget.AppCompatTextView
+                                                style="@style/ProTodo.TextView.Normal.TextView"
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="1"
+                                                android:gravity="center|start"
+                                                android:paddingTop="0dp"
+                                                android:paddingBottom="0dp"
+                                                android:text="Hôm nay"
+                                                android:textColor="@color/white"
+                                                android:textSize="16sp"
+                                                android:textStyle="bold" />
+
+                                            <androidx.appcompat.widget.AppCompatImageView
+                                                android:layout_width="35dp"
+                                                android:layout_height="35dp"
+                                                android:layout_marginEnd="2dp"
+                                                android:layout_marginBottom="2dp"
+                                                android:background="@drawable/ic_add" />
+
+                                        </LinearLayout>
+                                    </LinearLayout>
+                                </LinearLayout>
+                            </com.google.android.material.card.MaterialCardView>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:layout_width="0dp"
+                                android:layout_height="180dp"
+                                android:layout_marginStart="10dp"
+                                android:layout_weight="1"
+                                android:backgroundTint="#57D9A3"
+                                android:elevation="2dp"
+                                android:padding="5dp"
+                                app:cardCornerRadius="10dp"
+                                app:cardElevation="3dp"
+                                app:cardUseCompatPadding="true">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="vertical">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:paddingTop="5dp">
+
+                                        <androidx.appcompat.widget.AppCompatTextView
+                                            style="@style/ProTodo.TextView.Normal.TextView"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="8dp"
+                                            android:layout_weight="1"
+                                            android:paddingTop="0dp"
+                                            android:paddingBottom="25dp"
+                                            android:text="Hoạt động"
+                                            android:textColor="@color/white"
+                                            android:textSize="16sp"
+                                            android:textStyle="bold" />
+
+                                        <androidx.appcompat.widget.SwitchCompat
+                                            style="@style/ProTodoSwitchCompat.Green"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="10dp"
+                                            android:layout_marginEnd="-8dp"
+                                            android:rotation="90" />
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_gravity="center"
+                                        android:gravity="bottom|start"
+                                        android:orientation="vertical"
+                                        android:paddingStart="8dp"
+                                        android:paddingEnd="0dp">
+
+                                        <androidx.appcompat.widget.AppCompatImageView
+                                            android:layout_width="45dp"
+                                            android:layout_height="45dp"
+                                            android:background="@drawable/ic_calendar_v2" />
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:layout_marginTop="10dp"
+                                            android:layout_marginBottom="0dp"
+                                            android:gravity="center">
+
+                                            <androidx.appcompat.widget.AppCompatTextView
+                                                style="@style/ProTodo.TextView.Normal.TextView"
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="1"
+                                                android:gravity="center|start"
+                                                android:paddingTop="0dp"
+                                                android:paddingBottom="0dp"
+                                                android:text="Sắp tới"
+                                                android:textColor="@color/white"
+                                                android:textSize="16sp"
+                                                android:textStyle="bold" />
+
+                                            <androidx.appcompat.widget.AppCompatImageView
+                                                android:layout_width="35dp"
+                                                android:layout_height="35dp"
+                                                android:layout_marginEnd="2dp"
+                                                android:layout_marginBottom="2dp"
+                                                android:background="@drawable/ic_add" />
+
+                                        </LinearLayout>
+                                    </LinearLayout>
+                                </LinearLayout>
+                            </com.google.android.material.card.MaterialCardView>
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:layout_width="0dp"
+                                android:layout_height="180dp"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginEnd="10dp"
+                                android:layout_weight="1"
+                                android:backgroundTint="#2684FF"
+                                android:elevation="2dp"
+                                android:padding="5dp"
+                                app:cardCornerRadius="10dp"
+                                app:cardElevation="3dp"
+                                app:cardUseCompatPadding="true">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="vertical">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:paddingTop="5dp">
+
+                                        <androidx.appcompat.widget.AppCompatTextView
+                                            style="@style/ProTodo.TextView.Normal.TextView"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="8dp"
+                                            android:layout_weight="1"
+                                            android:paddingTop="0dp"
+                                            android:paddingBottom="25dp"
+                                            android:text="Hoạt động"
+                                            android:textColor="@color/white"
+                                            android:textSize="16sp"
+                                            android:textStyle="bold" />
+
+                                        <androidx.appcompat.widget.SwitchCompat
+                                            style="@style/ProTodoSwitchCompat.Blue"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="10dp"
+                                            android:layout_marginEnd="-8dp"
+                                            android:rotation="90" />
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_gravity="center"
+                                        android:gravity="bottom|start"
+                                        android:orientation="vertical"
+                                        android:paddingStart="8dp"
+                                        android:paddingEnd="0dp">
+
+                                        <androidx.appcompat.widget.AppCompatTextView
+                                            android:layout_width="45dp"
+                                            android:layout_height="45dp"
+                                            android:background="@drawable/ic_today"
+                                            android:gravity="center"
+                                            android:paddingTop="8dp"
+                                            android:text="0 9"
+                                            android:textColor="@color/white"
+                                            android:textSize="16dp"
+                                            android:textStyle="bold" />
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:layout_marginTop="10dp"
+                                            android:layout_marginBottom="0dp"
+                                            android:gravity="center">
+
+                                            <androidx.appcompat.widget.AppCompatTextView
+                                                style="@style/ProTodo.TextView.Normal.TextView"
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="1"
+                                                android:gravity="center|start"
+                                                android:paddingTop="0dp"
+                                                android:paddingBottom="0dp"
+                                                android:text="Quản lý thiết bị"
+                                                android:textColor="@color/white"
+                                                android:textSize="16sp"
+                                                android:textStyle="bold" />
+
+                                            <androidx.appcompat.widget.AppCompatImageView
+                                                android:layout_width="35dp"
+                                                android:layout_height="35dp"
+                                                android:layout_marginEnd="2dp"
+                                                android:layout_marginBottom="2dp"
+                                                android:background="@drawable/ic_add" />
+
+                                        </LinearLayout>
+                                    </LinearLayout>
+                                </LinearLayout>
+                            </com.google.android.material.card.MaterialCardView>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/ProTodo.TextView.Normal.TextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="15dp"
+                        android:paddingStart="5dp"
+                        android:text="Try again"
+                        android:textSize="25sp"
+                        android:textStyle="normal" />
+
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/recycle_view"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
+                        android:layout_marginTop="15dp"
                         android:layout_weight="1"
                         android:background="@color/white" />
+
 
                 </LinearLayout>
             </androidx.core.widget.NestedScrollView>
@@ -50,7 +477,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_scrollFlags="scroll|enterAlways|snap"
-                    app:title="Pro TODO"
+                    app:title="="
                     app:titleTextColor="@color/black" />
 
             </com.google.android.material.appbar.AppBarLayout>
