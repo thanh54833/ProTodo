@@ -39,7 +39,7 @@
                         android:paddingStart="5dp"
                         android:text="Pro Todo"
                         android:textColor="@color/black"
-                        android:textSize="25sp"
+                        android:textSize="20sp"
                         android:textStyle="bold" />
 
                     <LinearLayout
@@ -52,12 +52,13 @@
                             android:layout_height="match_parent">
 
                             <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/inbox_cv"
                                 android:layout_width="0dp"
                                 android:layout_height="180dp"
-                                android:layout_marginStart="10dp"
+                                android:layout_marginStart="5dp"
                                 android:layout_weight="1"
                                 android:backgroundTint="#DE350B"
-                                android:elevation="2dp"
+                                android:elevation="3dp"
                                 android:padding="5dp"
                                 app:cardCornerRadius="10dp"
                                 app:cardElevation="3dp"
@@ -132,6 +133,7 @@
                                                 android:textStyle="bold" />
 
                                             <androidx.appcompat.widget.AppCompatImageView
+                                                android:id="@+id/inbox_add_bt"
                                                 android:layout_width="37dp"
                                                 android:layout_height="37dp"
                                                 android:padding="2dp"
@@ -143,9 +145,10 @@
                             </com.google.android.material.card.MaterialCardView>
 
                             <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/today_cv"
                                 android:layout_width="0dp"
                                 android:layout_height="180dp"
-                                android:layout_marginStart="8dp"
+                                android:layout_marginStart="5dp"
                                 android:layout_marginEnd="10dp"
                                 android:layout_weight="1"
                                 android:backgroundTint="#344563"
@@ -230,6 +233,7 @@
                                                 android:textStyle="bold" />
 
                                             <androidx.appcompat.widget.AppCompatImageView
+                                                android:id="@+id/today_add_bt"
                                                 android:layout_width="37dp"
                                                 android:layout_height="37dp"
                                                 android:padding="2dp"
@@ -247,9 +251,10 @@
                             android:layout_height="match_parent">
 
                             <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/calender_cv"
                                 android:layout_width="0dp"
                                 android:layout_height="180dp"
-                                android:layout_marginStart="10dp"
+                                android:layout_marginStart="5dp"
                                 android:layout_weight="1"
                                 android:backgroundTint="#57D9A3"
                                 android:elevation="2dp"
@@ -327,6 +332,7 @@
                                                 android:textStyle="bold" />
 
                                             <androidx.appcompat.widget.AppCompatImageView
+                                                android:id="@+id/calender_add_bt"
                                                 android:layout_width="37dp"
                                                 android:layout_height="37dp"
                                                 android:padding="2dp"
@@ -337,9 +343,10 @@
                             </com.google.android.material.card.MaterialCardView>
 
                             <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/manager_cv"
                                 android:layout_width="0dp"
                                 android:layout_height="180dp"
-                                android:layout_marginStart="8dp"
+                                android:layout_marginStart="5dp"
                                 android:layout_marginEnd="10dp"
                                 android:layout_weight="1"
                                 android:backgroundTint="#2684FF"
@@ -403,7 +410,7 @@
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
                                             android:layout_gravity="center"
-                                            android:layout_marginTop="10dp"
+                                            android:layout_marginTop="1dp"
                                             android:layout_marginBottom="0dp"
                                             android:gravity="center">
 
@@ -421,6 +428,7 @@
                                                 android:textStyle="bold" />
 
                                             <androidx.appcompat.widget.AppCompatImageView
+                                                android:id="@+id/manager_add_bt"
                                                 android:layout_width="37dp"
                                                 android:layout_height="37dp"
                                                 android:padding="2dp"
@@ -440,9 +448,10 @@
                         android:layout_marginStart="15dp"
                         android:layout_marginEnd="15dp"
                         android:paddingStart="5dp"
+                        android:paddingEnd="0dp"
                         android:text="Try again"
-                        android:textSize="25sp"
-                        android:textStyle="normal" />
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/recycle_view"
@@ -468,7 +477,15 @@
                     android:layout_height="wrap_content"
                     app:layout_scrollFlags="scroll|enterAlways|snap"
                     app:title="="
-                    app:titleTextColor="@color/black" />
+                    app:titleTextColor="@color/black">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                    </LinearLayout>
+                </androidx.appcompat.widget.Toolbar>
 
             </com.google.android.material.appbar.AppBarLayout>
         </androidx.coordinatorlayout.widget.CoordinatorLayout>

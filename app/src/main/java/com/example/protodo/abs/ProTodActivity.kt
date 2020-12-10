@@ -30,12 +30,12 @@ abstract class ProTodActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         //Todo : check available content view ...
 
-//        this.findViewById<View>(R.id.content).rootView.setBackgroundColor(
-//            ContextCompat.getColor(
-//                this,
-//                R.color.white
-//            )
-//        )
+        rootView?.setBackgroundColor(
+            ContextCompat.getColor(
+                this,
+                R.color.white
+            )
+        )
 
         initiativeView()
         if (this::keyBoardActListener.isInitialized) {
@@ -69,6 +69,11 @@ abstract class ProTodActivity : AppCompatActivity() {
     }
 
     abstract fun initiativeView()
+
+    val rootView: View?
+        get() {
+            return this.findViewById<View>(R.id.content).rootView
+        }
 
     fun String.toast(color: Int = Color.RED) {
         val toast: Toast = Toast.makeText(baseContext, this, Toast.LENGTH_SHORT)

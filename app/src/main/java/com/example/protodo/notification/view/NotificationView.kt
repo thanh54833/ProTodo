@@ -21,6 +21,7 @@ class NotificationView @JvmOverloads constructor(
     override fun initializeCustomView() {
         //binding = getViewBinding(context, R.layout.notification_view, this)
 
+
     }
 }
 

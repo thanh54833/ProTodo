@@ -6,6 +6,7 @@ import com.example.protodo.Utils.Log
 import com.example.protodo.abs.ProTodActivity
 import com.example.protodo.databinding.AnimationItemBinding
 import com.example.protodo.databinding.DashBoardActBinding
+import com.example.protodo.editor.WriteAct
 import com.fxn.OnBubbleClickListener
 import com.halo.widget.recycle.HolderBase
 import com.halo.widget.recycle.HolderListenerBase
@@ -33,6 +34,18 @@ class DashBoardAct : ProTodActivity() {
                 initRecycleView()
             }
         })
+        binding.inboxAddBt.setOnClickListener {
+            startActivity(WriteAct.getIntent(this@DashBoardAct))
+        }
+        binding.todayAddBt.setOnClickListener {
+
+        }
+        binding.calenderAddBt.setOnClickListener {
+
+        }
+        binding.managerAddBt.setOnClickListener {
+
+        }
     }
 
     private fun initView() {
