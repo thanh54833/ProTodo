@@ -227,4 +227,21 @@
     </style>
 
 
+    <!-- Search View -->
+    <style name="ProTodo.SearchView" parent="@android:style/Widget.Material.SearchView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="iconifiedByDefault">false</item>
+        <item name="searchHintIcon">@drawable/ic_add</item>
+        <item name="searchIcon">@drawable/ic_today</item>
+        <item name="android:colorPrimary">@color/white</item>
+        <item name="android:colorPrimaryDark">@color/white</item>
+        <item name="android:colorAccent">@color/white</item>
+    </style>
+
+    <style name="ProTodo.searchView.Normal" parent="Widget.AppCompat.SearchView">
+        <item name="android:textSize">17sp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
 </resources>

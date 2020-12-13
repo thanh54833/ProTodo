@@ -39,8 +39,27 @@
                         android:paddingStart="5dp"
                         android:text="Pro Todo"
                         android:textColor="@color/black"
-                        android:textSize="20sp"
+                        android:textSize="25sp"
                         android:textStyle="bold" />
+
+<!--                    <com.example.protodo.Utils.ProTodoSearchView-->
+<!--                        android:id="@+id/search_tv"-->
+<!--                        style="@style/ProTodo.SearchView"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_gravity="center"-->
+<!--                        android:layout_marginStart="15dp"-->
+<!--                        android:layout_marginTop="15dp"-->
+<!--                        android:layout_marginEnd="15dp"-->
+<!--                        android:background="@drawable/bg_department_search"-->
+<!--                        android:focusable="false"-->
+<!--                        android:gravity="center"-->
+<!--                        app:queryBackground="@drawable/bg_department_search"-->
+<!--                        app:queryHint="ticket_enter_find"-->
+<!--                        app:searchHintIcon="@drawable/ic_today"-->
+<!--                        app:searchIcon="@drawable/ic_today"-->
+<!--                        app:submitBackground="@drawable/search_view_bg"-->
+<!--                        app:theme="@style/ProTodo.searchView.Normal" />-->
 
                     <LinearLayout
                         android:layout_width="match_parent"

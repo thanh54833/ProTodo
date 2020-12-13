@@ -51,6 +51,7 @@
 
 
     <application
+        android:name=".example.exercise.dagger2.App"
         android:allowBackup="true"
         android:icon="@drawable/ic_app"
         android:label="@string/app_name"
@@ -102,6 +103,13 @@
 
         <activity
             android:name=".controlpanel.ControlPanelAct"
+            android:configChanges="orientation|screenSize"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustPan" />
+
+        <activity
+            android:name=".example.exercise.dagger2.Dagger2Act"
             android:configChanges="orientation|screenSize"
             android:exported="true"
             android:launchMode="singleTop"

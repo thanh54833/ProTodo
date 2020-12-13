@@ -12,7 +12,6 @@ import com.halo.widget.recycle.HolderBase
 import com.halo.widget.recycle.HolderListenerBase
 import com.halo.widget.recycle.RecycleViewAnimation
 import com.halo.widget.recycle.setContentView
-import petrov.kristiyan.colorpicker.ColorPicker
 
 class DashBoardAct : ProTodActivity() {
     lateinit var binding: DashBoardActBinding
@@ -27,7 +26,6 @@ class DashBoardAct : ProTodActivity() {
         binding.buton.setOnClickListener {
 
         }
-
         //Todo : detect change tab :...
         binding.bubbleTabBar.addBubbleListener(object : OnBubbleClickListener {
             override fun onBubbleClick(id: Int) {
@@ -57,7 +55,9 @@ class DashBoardAct : ProTodActivity() {
             listOf("", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""),
             HolderBase<AnimationItemBinding, HolderListenerBase>(
                 this@DashBoardAct,
-                R.layout.animation_item, object : HolderListenerBase {
+                R.layout.animation_item,
+
+                object : HolderListenerBase {
 
                 }
             ),
