@@ -13,11 +13,12 @@ import androidx.core.content.ContextCompat
 import androidx.databinding.ViewDataBinding
 import com.example.protodo.Utils.Log
 import com.example.protodo.common.KeyBoardModel
+import dagger.android.support.DaggerAppCompatActivity
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEventListener
 
 
-abstract class ProTodActivity : AppCompatActivity() {
+abstract class ProTodActivity : DaggerAppCompatActivity() {
     private var keyBoardModel = KeyBoardModel()
     private var callBack: ViewTreeObserver.OnGlobalLayoutListener? = null
     private var heightOld: Int? = null
