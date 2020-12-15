@@ -9,7 +9,7 @@ import com.example.protodo.example.exercise.dagger2.module.TestModule
 import dagger.Lazy
 import javax.inject.Inject
 
-class Dagger2Act : ProTodActivity() {
+class Dagger3Act : ProTodActivity() {
     @Inject
     lateinit var firstFragment: Lazy<FirstFragment>
 
@@ -18,7 +18,7 @@ class Dagger2Act : ProTodActivity() {
     lateinit var binding: DaggerActBinding
 
     override fun initiativeView() {
-        binding = DataBindingUtil.setContentView(this@Dagger2Act, R.layout.dagger_act)
+        binding = DataBindingUtil.setContentView(this@Dagger3Act, R.layout.dagger_act)
         supportFragmentManager.beginTransaction().add(binding.contentLayout.id, firstFragment.get())
             .commit()
         user.getSumUseCase().name.Log("user.getSumUseCase().name :...")

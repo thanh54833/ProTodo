@@ -39,9 +39,7 @@ class FirstFragment @Inject constructor() : DaggerFragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel.infoText.observe(viewLifecycleOwner, Observer {
             //timestampTextView.text = "current time = $it"
-
             "current time : $it ".Log()
-
         })
     }
 }

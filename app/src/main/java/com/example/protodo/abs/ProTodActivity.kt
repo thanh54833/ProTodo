@@ -13,9 +13,12 @@ import androidx.core.content.ContextCompat
 import androidx.databinding.ViewDataBinding
 import com.example.protodo.Utils.Log
 import com.example.protodo.common.KeyBoardModel
+import com.example.protodo.example.exercise.dagger2.FirstFragment
+import dagger.Lazy
 import dagger.android.support.DaggerAppCompatActivity
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEventListener
+import javax.inject.Inject
 
 
 abstract class ProTodActivity : DaggerAppCompatActivity() {
@@ -25,19 +28,18 @@ abstract class ProTodActivity : DaggerAppCompatActivity() {
     lateinit var keyBoardActListener: (width: Int, height: Int, isVisible: Boolean) -> Unit
     //lateinit var binding: ViewDataBinding
 
+
     override fun onCreate(
         savedInstanceState: Bundle?
     ) {
         super.onCreate(savedInstanceState)
         //Todo : check available content view ...
-
         rootView?.setBackgroundColor(
             ContextCompat.getColor(
                 this,
                 R.color.white
             )
         )
-
         initiativeView()
         if (this::keyBoardActListener.isInitialized) {
             KeyboardVisibilityEvent.setEventListener(this,
@@ -71,7 +73,7 @@ abstract class ProTodActivity : DaggerAppCompatActivity() {
 
     abstract fun initiativeView()
 
-    val rootView: View?
+    private val rootView: View?
         get() {
             return this.findViewById<View>(R.id.content).rootView
         }

@@ -54,7 +54,7 @@ private fun tag(): String? {
         return index
     }
     return Thread.currentThread().stackTrace.getOrNull(getNumberStack())?.let { element ->
-        "(${element.fileName}:${element.lineNumber})I/==="
+        "(${element.fileName}:${element.lineNumber})I/~~~"
     }
 }
 

@@ -115,6 +115,20 @@
             android:launchMode="singleTop"
             android:windowSoftInputMode="adjustPan" />
 
+        <activity
+            android:name=".example.exercise.MVI.MVIAct"
+            android:configChanges="orientation|screenSize"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustPan" />
+
+        <activity
+            android:name=".example.exercise.dagger2.Dagger3Act"
+            android:configChanges="orientation|screenSize"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustPan" />
+
 
         <!-- Services -->
         <service
