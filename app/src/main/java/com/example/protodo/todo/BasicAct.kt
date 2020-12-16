@@ -15,6 +15,14 @@ class BasicAct : ProTodActivity() {
         initData()
     }
 
+    override fun setupUI() {
+        //TODO("Not yet implemented")
+    }
+
+    override fun observeViewModel() {
+        //TODO("Not yet implemented")
+    }
+
     private fun initView() {
 
         binding.bottomMenu.add(MeowBottomNavigation.Model(1, R.drawable.ic_button))

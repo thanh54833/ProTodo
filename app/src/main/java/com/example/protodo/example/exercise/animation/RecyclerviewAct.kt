@@ -23,6 +23,14 @@ class RecyclerviewAct : ProTodActivity() {
         initAction()
     }
 
+    override fun setupUI() {
+        //TODO("Not yet implemented")
+    }
+
+    override fun observeViewModel() {
+        //TODO("Not yet implemented")
+    }
+
     private fun initAction() {
         binding.buton.setOnClickListener {
             binding.recycleView.setContentView(

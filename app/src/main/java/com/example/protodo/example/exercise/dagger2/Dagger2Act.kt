@@ -23,4 +23,12 @@ class Dagger2Act : ProTodActivity() {
             .commit()
         user.getSumUseCase().name.Log("user.getSumUseCase().name :...")
     }
+
+    override fun setupUI() {
+        //TODO("Not yet implemented")
+    }
+
+    override fun observeViewModel() {
+        //TODO("Not yet implemented")
+    }
 }

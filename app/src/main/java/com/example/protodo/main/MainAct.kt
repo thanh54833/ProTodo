@@ -56,6 +56,14 @@ class MainAct : ProTodActivity() {
 
     }
 
+    override fun setupUI() {
+        //TODO("Not yet implemented")
+    }
+
+    override fun observeViewModel() {
+        //TODO("Not yet implemented")
+    }
+
     private fun shortCut() {
         val shortCutModel = ShortCutModel().apply {
             shortLabel = "Test Label"

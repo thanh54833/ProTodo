@@ -6,9 +6,9 @@ data class User(
     @Json(name = "id")
     val id: Int = 0,
     @Json(name = "name")
-    val name: String = "",
+    val name: String = "name",
     @Json(name = "email")
-    val email: String = "",
+    val email: String = "email@gmail.com",
     @Json(name = "avatar")
-    val avatar: String = ""
+    val avatar: String = "avatar"
 )

@@ -48,6 +48,14 @@ class TestViewAct : ProTodActivity() {
         bindV2()
     }
 
+    override fun setupUI() {
+        //TODO("Not yet implemented")
+    }
+
+    override fun observeViewModel() {
+        //TODO("Not yet implemented")
+    }
+
     private fun bind4() {
         "bind 4 :...".Log()
         val wifiManager = applicationContext.getSystemService(WIFI_SERVICE) as WifiManager

@@ -103,6 +103,14 @@ class WriteAct : ProTodActivity() {
 
     }
 
+    override fun setupUI() {
+        //TODO("Not yet implemented")
+    }
+
+    override fun observeViewModel() {
+        //TODO("Not yet implemented")
+    }
+
     fun Context.isAppInForeground(): Boolean {
 
         val application = this.applicationContext

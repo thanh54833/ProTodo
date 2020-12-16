@@ -30,6 +30,14 @@ class ExampleAct : ProTodActivity() {
         startService(intentService)
     }
 
+    override fun setupUI() {
+        //TODO("Not yet implemented")
+    }
+
+    override fun observeViewModel() {
+        //TODO("Not yet implemented")
+    }
+
 
     private fun initAction() {
         binding.clickBt.setOnClickListener {

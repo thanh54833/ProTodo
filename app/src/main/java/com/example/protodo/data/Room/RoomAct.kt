@@ -8,8 +8,14 @@ import com.example.protodo.abs.ProTodActivity
 class RoomAct : ProTodActivity() {
 
     override fun initiativeView() {
+        
+    }
 
+    override fun setupUI() {
+        //TODO("Not yet implemented")
+    }
 
-
+    override fun observeViewModel() {
+        //TODO("Not yet implemented")
     }
 }

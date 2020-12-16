@@ -18,6 +18,14 @@ class ControlPanelAct : ProTodActivity() {
         initAction()
     }
 
+    override fun setupUI() {
+        //TODO("Not yet implemented")
+    }
+
+    override fun observeViewModel() {
+        //TODO("Not yet implemented")
+    }
+
     private fun initView() {
         binding.soundSwt.isChecked = true
         binding.timePicker.setIs24HourView(true)

@@ -25,6 +25,14 @@ class LocalWordAct : ProTodActivity(), ServiceConnection {
 
     }
 
+    override fun setupUI() {
+        //TODO("Not yet implemented")
+    }
+
+    override fun observeViewModel() {
+        //TODO("Not yet implemented")
+    }
+
     override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
         //TODO("Not yet implemented")
         "onServiceConnected :..".Log()

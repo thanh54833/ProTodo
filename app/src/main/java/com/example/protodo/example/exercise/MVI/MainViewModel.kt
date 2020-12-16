@@ -16,6 +16,7 @@ class MainViewModel @Inject constructor(private val repository: MainRepository) 
 
     val userIntent = Channel<MainIntent>(Channel.UNLIMITED)
     private val _state = MutableStateFlow<MainState>(MainState.Idle)
+
     val state: StateFlow<MainState>
         get() = _state
 
@@ -34,6 +35,7 @@ class MainViewModel @Inject constructor(private val repository: MainRepository) 
     }
 
     private fun fetchUser() {
+
         viewModelScope.launch {
             _state.value = MainState.Loading
             _state.value = try {
@@ -42,5 +44,6 @@ class MainViewModel @Inject constructor(private val repository: MainRepository) 
                 MainState.Error(e.localizedMessage)
             }
         }
+        
     }
 }

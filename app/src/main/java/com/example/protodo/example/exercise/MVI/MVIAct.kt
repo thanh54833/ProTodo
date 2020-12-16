@@ -33,7 +33,7 @@ class MVIAct : ProTodActivity() {
 
     override fun initiativeView() {
         binding = DataBindingUtil.setContentView(this@MVIAct, R.layout.mvi_act)
-        setContentView(R.layout.activity_main)
+
         setupUI()
         setupViewModel()
         observeViewModel()
@@ -48,7 +48,7 @@ class MVIAct : ProTodActivity() {
         }
     }
 
-    private fun setupUI() {
+    override fun setupUI() {
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         binding.recyclerView.run {
             addItemDecoration(
@@ -73,14 +73,22 @@ class MVIAct : ProTodActivity() {
 //        ).get(MainViewModel::class.java)
     }
 
-    private fun observeViewModel() {
+    override fun observeViewModel() {
         lifecycleScope.launch {
             mainViewModel.state.collect {
-
                 "mainViewModel.state :... $it ".Log()
-
                 when (it) {
                     is MainState.Idle -> {
+
+                        "MainState.Idle :... ".Log()
+
+                        //Todo :  thanh create data for view :...
+                        val user = User()
+                        renderList(listOf(user, user, user, user, user))
+
+                        binding.progressBar.visibility = View.GONE
+                        binding.buttonFetchUser.visibility = View.GONE
+                        binding.recyclerView.visibility = View.VISIBLE
 
                     }
                     is MainState.Loading -> {
@@ -88,11 +96,9 @@ class MVIAct : ProTodActivity() {
                         binding.progressBar.visibility = View.VISIBLE
                     }
                     is MainState.Users -> {
-
                         binding.progressBar.visibility = View.GONE
                         binding.buttonFetchUser.visibility = View.GONE
                         renderList(it.user)
-
                     }
                     is MainState.Error -> {
                         binding.progressBar.visibility = View.GONE

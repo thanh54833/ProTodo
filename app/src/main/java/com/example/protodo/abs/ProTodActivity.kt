@@ -40,7 +40,11 @@ abstract class ProTodActivity : DaggerAppCompatActivity() {
                 R.color.white
             )
         )
+
         initiativeView()
+        setupUI()
+        observeViewModel()
+
         if (this::keyBoardActListener.isInitialized) {
             KeyboardVisibilityEvent.setEventListener(this,
                 object : KeyboardVisibilityEventListener {
@@ -72,6 +76,10 @@ abstract class ProTodActivity : DaggerAppCompatActivity() {
     }
 
     abstract fun initiativeView()
+
+
+    abstract fun setupUI()
+    abstract fun observeViewModel()
 
     private val rootView: View?
         get() {

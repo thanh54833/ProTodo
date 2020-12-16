@@ -29,6 +29,14 @@ class ThreadAct : ProTodActivity() {
 
 
     }
+
+    override fun setupUI() {
+        //TODO("Not yet implemented")
+    }
+
+    override fun observeViewModel() {
+        //TODO("Not yet implemented")
+    }
 }
 
 //Todo : Làm 1 cái ví dụ về đồng bộ và bất đồng bộ :...

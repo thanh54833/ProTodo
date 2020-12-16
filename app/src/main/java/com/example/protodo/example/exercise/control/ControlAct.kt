@@ -9,4 +9,12 @@ class ControlAct : ProTodActivity() {
 
 
     }
+
+    override fun setupUI() {
+        //TODO("Not yet implemented")
+    }
+
+    override fun observeViewModel() {
+        //TODO("Not yet implemented")
+    }
 }

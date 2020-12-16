@@ -52,6 +52,14 @@ class AlarmAct : ProTodActivity(), ServiceConnection {
         initScreen()
     }
 
+    override fun setupUI() {
+        //TODO("Not yet implemented")
+    }
+
+    override fun observeViewModel() {
+        //TODO("Not yet implemented")
+    }
+
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP_MR1)
     @SuppressLint("CheckResult")
     private fun initScreen() {

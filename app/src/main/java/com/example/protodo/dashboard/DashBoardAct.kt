@@ -22,6 +22,14 @@ class DashBoardAct : ProTodActivity() {
         initRecycleView()
     }
 
+    override fun setupUI() {
+        //TODO("Not yet implemented")
+    }
+
+    override fun observeViewModel() {
+        //TODO("Not yet implemented")
+    }
+
     private fun initAction() {
         binding.buton.setOnClickListener {
 
