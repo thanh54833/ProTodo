@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <!--Set application-wide security config using base-config tag.-->
+    <!--    <base-config cleartextTrafficPermitted="false" />-->
+
+    <!-- https://stackoverflow.com/questions/41650965/cleartext-communication-not-supported-on-retrofit-->
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">10.0.2.250</domain>
+    </domain-config>
+</network-security-config>

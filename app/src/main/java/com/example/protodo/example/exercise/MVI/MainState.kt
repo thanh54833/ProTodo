@@ -1,5 +1,7 @@
 package com.example.protodo.example.exercise.MVI
 
+import com.example.protodo.example.exercise.MVI.model.User
+
 
 sealed class MainState {
     object Idle : MainState()

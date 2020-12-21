@@ -1,10 +1,10 @@
-package com.example.protodo.example.exercise.MVI
+package com.example.protodo.example.exercise.MVI.model
 
 import com.squareup.moshi.Json
 
 data class User(
     @Json(name = "id")
-    val id: Int = 0,
+    val id: String = "",
     @Json(name = "name")
     val name: String = "name",
     @Json(name = "email")

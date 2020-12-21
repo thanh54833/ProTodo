@@ -2,6 +2,8 @@ package com.example.protodo.example.exercise.MVI
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.protodo.example.exercise.MVI.di.MainRepository
+import com.example.protodo.example.exercise.MVI.view.MainIntent
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -35,7 +37,6 @@ class MainViewModel @Inject constructor(private val repository: MainRepository) 
     }
 
     private fun fetchUser() {
-
         viewModelScope.launch {
             _state.value = MainState.Loading
             _state.value = try {
@@ -44,6 +45,5 @@ class MainViewModel @Inject constructor(private val repository: MainRepository) 
                 MainState.Error(e.localizedMessage)
             }
         }
-        
     }
 }

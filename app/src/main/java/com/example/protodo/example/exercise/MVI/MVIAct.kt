@@ -1,21 +1,22 @@
 package com.example.protodo.example.exercise.MVI
 
+import android.annotation.SuppressLint
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.protodo.R
 import com.example.protodo.Utils.Log
 import com.example.protodo.abs.ProTodActivity
-import com.example.protodo.databinding.DaggerActBinding
+import com.example.protodo.databinding.ItemViewBinding
 import com.example.protodo.databinding.MviActBinding
-import com.example.protodo.example.exercise.dagger2.FirstFragment
-import com.example.protodo.example.exercise.dagger2.module.TestModule
-import dagger.Lazy
+import com.example.protodo.example.exercise.MVI.model.User
+import com.example.protodo.example.exercise.MVI.view.MainAdapter
+import com.example.protodo.example.exercise.MVI.view.MainIntent
+import com.halo.widget.recycle.HolderBase
+import com.halo.widget.recycle.setContentView
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -34,7 +35,7 @@ class MVIAct : ProTodActivity() {
     override fun initiativeView() {
         binding = DataBindingUtil.setContentView(this@MVIAct, R.layout.mvi_act)
 
-        setupUI()
+        "MVIAct :..".Log()
         setupViewModel()
         observeViewModel()
         setupClicks()
@@ -46,21 +47,16 @@ class MVIAct : ProTodActivity() {
                 mainViewModel.userIntent.send(MainIntent.FetchUser)
             }
         }
+
+        //call api ....
+        lifecycleScope.launch {
+            mainViewModel.userIntent.send(MainIntent.FetchUser)
+        }
     }
 
     override fun setupUI() {
-        binding.recyclerView.layoutManager = LinearLayoutManager(this)
-        binding.recyclerView.run {
-            addItemDecoration(
-                DividerItemDecoration(
-                    binding.recyclerView.context,
-                    (binding.recyclerView.layoutManager as LinearLayoutManager).orientation
-                )
-            )
-        }
-        binding.recyclerView.adapter = adapter
-    }
 
+    }
 
     private fun setupViewModel() {
 //        mainViewModel = ViewModelProviders.of(
@@ -76,28 +72,26 @@ class MVIAct : ProTodActivity() {
     override fun observeViewModel() {
         lifecycleScope.launch {
             mainViewModel.state.collect {
-                "mainViewModel.state :... $it ".Log()
+                //"mainViewModel.state :... $it ".Log()
                 when (it) {
                     is MainState.Idle -> {
-
                         "MainState.Idle :... ".Log()
-
                         //Todo :  thanh create data for view :...
-                        val user = User()
-                        renderList(listOf(user, user, user, user, user))
-
-                        binding.progressBar.visibility = View.GONE
-                        binding.buttonFetchUser.visibility = View.GONE
-                        binding.recyclerView.visibility = View.VISIBLE
-
+                        //val user = User()
+                        //renderList(listOf(user, user, user, user, user))
+//                        binding.progressBar.visibility = View.GONE
+//                        binding.buttonFetchUser.visibility = View.GONE
+//                        binding.recyclerView.visibility = View.VISIBLE
                     }
                     is MainState.Loading -> {
                         binding.buttonFetchUser.visibility = View.GONE
                         binding.progressBar.visibility = View.VISIBLE
                     }
                     is MainState.Users -> {
+                        "MainState.Users :..".Log()
                         binding.progressBar.visibility = View.GONE
                         binding.buttonFetchUser.visibility = View.GONE
+                        binding.recyclerView.visibility = View.VISIBLE
                         renderList(it.user)
                     }
                     is MainState.Error -> {
@@ -110,9 +104,36 @@ class MVIAct : ProTodActivity() {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun renderList(users: List<User>) {
-        binding.recyclerView.visibility = View.VISIBLE
-        users.let { listOfUsers -> listOfUsers.let { adapter.addData(it) } }
-        adapter.notifyDataSetChanged()
+
+        "users :... ${users.size} ".Log()
+
+//        binding.recyclerView.visibility = View.VISIBLE
+//        binding.recyclerView.layoutManager = LinearLayoutManager(this)
+//        binding.recyclerView.run {
+//            addItemDecoration(
+//                DividerItemDecoration(
+//                    binding.recyclerView.context,
+//                    (binding.recyclerView.layoutManager as LinearLayoutManager).orientation
+//                )
+//            )
+//        }
+//        users.let { listOfUsers -> listOfUsers.let { adapter.addData(it) } }
+//        binding.recyclerView.adapter = adapter
+        //adapter.notifyDataSetChanged()
+
+        binding.recyclerView.setContentView(
+            users,
+            HolderBase<ItemViewBinding, Interface>(this@MVIAct, R.layout.item_view)
+        ) { _binding, _item, _ ->
+            _binding.textView.text = _item?.data?.name + "---" + _item?.position
+        }
+
+
+    }
+
+    interface Interface {
+
     }
 }

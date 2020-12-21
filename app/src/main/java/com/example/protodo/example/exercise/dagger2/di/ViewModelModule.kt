@@ -3,6 +3,10 @@ package com.example.protodo.example.exercise.dagger2.di
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.protodo.example.exercise.MVI.*
+import com.example.protodo.example.exercise.MVI.api.ApiHelper
+import com.example.protodo.example.exercise.MVI.api.ApiHelperImpl
+import com.example.protodo.example.exercise.MVI.di.MainRepository
+import com.example.protodo.example.exercise.MVI.di.MainRepositoryImpl
 import com.example.protodo.example.exercise.dagger2.FirstFragmentViewModel
 import com.example.protodo.example.exercise.dagger2.ViewModelFactory
 import dagger.Binds

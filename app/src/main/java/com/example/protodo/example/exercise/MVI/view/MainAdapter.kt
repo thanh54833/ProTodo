@@ -1,4 +1,4 @@
-package com.example.protodo.example.exercise.MVI
+package com.example.protodo.example.exercise.MVI.view
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.protodo.R
+import com.example.protodo.example.exercise.MVI.model.User
 import kotlinx.android.synthetic.main.item_layout.view.*
 
 

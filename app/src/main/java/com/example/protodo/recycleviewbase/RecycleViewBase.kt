@@ -147,7 +147,7 @@ class RecycleViewBase<T : Any, VDB : ViewDataBinding, I : Any?>(
 class HolderBase<VDB : ViewDataBinding, I : Any?>(
     var context: Context,
     var layoutId: Int,
-    var listener: I?
+    var listener: I? = null
 ) :
     RecyclerView.ViewHolder(getView(context, layoutId)) {
     fun onCreateViewHolder(parent: ViewGroup): HolderBase<VDB, I> {
