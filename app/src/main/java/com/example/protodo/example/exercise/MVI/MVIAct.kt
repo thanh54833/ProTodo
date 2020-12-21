@@ -42,11 +42,12 @@ class MVIAct : ProTodActivity() {
     }
 
     private fun setupClicks() {
-        binding.buttonFetchUser.setOnClickListener {
-            lifecycleScope.launch {
-                mainViewModel.userIntent.send(MainIntent.FetchUser)
-            }
-        }
+        
+//        binding.buttonFetchUser.setOnClickListener {
+//            lifecycleScope.launch {
+//                mainViewModel.userIntent.send(MainIntent.FetchUser)
+//            }
+//        }
 
         //call api ....
         lifecycleScope.launch {

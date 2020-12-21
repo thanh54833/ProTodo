@@ -1,8 +1,10 @@
 package com.example.protodo.example.exercise.dagger2.di
 
 import com.example.protodo.example.exercise.MVI.MVIAct
+import com.example.protodo.example.exercise.api.ApiAct
 import com.example.protodo.example.exercise.dagger2.Dagger2Act
 import com.example.protodo.example.exercise.dagger2.Dagger3Act
+import com.example.protodo.example.exercise.remote.RemoteAct
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 import dagger.android.DaggerActivity
@@ -22,4 +24,11 @@ abstract class MainActivityModule {
 
     @ContributesAndroidInjector
     abstract fun bindMviAct(): MVIAct
+
+    @ContributesAndroidInjector
+    abstract fun bindApiAct(): ApiAct
+
+    @ContributesAndroidInjector
+    abstract fun bindRemoteAct(): RemoteAct
+
 }
