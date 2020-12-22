@@ -4,12 +4,10 @@ import com.example.protodo.example.exercise.MVI.MVIAct
 import com.example.protodo.example.exercise.api.ApiAct
 import com.example.protodo.example.exercise.dagger2.Dagger2Act
 import com.example.protodo.example.exercise.dagger2.Dagger3Act
-import com.example.protodo.example.exercise.firebase.FireBaseAct
+import com.example.protodo.example.exercise.firebase.FireBaseDataAct
 import com.example.protodo.example.exercise.remote.RemoteAct
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
-import dagger.android.DaggerActivity
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 @Module
 abstract class MainActivityModule {
@@ -33,7 +31,7 @@ abstract class MainActivityModule {
     abstract fun bindRemoteAct(): RemoteAct
 
     @ContributesAndroidInjector
-    abstract fun bindFireBaseAct(): FireBaseAct
+    abstract fun bindFireBaseAct(): FireBaseDataAct
 
 
 }

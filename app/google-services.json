@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "363754585440",
+    "project_id": "protodo-ad10d",
+    "storage_bucket": "protodo-ad10d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:363754585440:android:b18f8ae30f5ff0086c3205",
+        "android_client_info": {
+          "package_name": "com.example.protodo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "363754585440-7mksq7ek90ff7gb0as764d75ogh0rqru.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.protodo",
+            "certificate_hash": "37dd1efefaa2405e4ab05a3960345a32fc544f8d"
+          }
+        },
+        {
+          "client_id": "363754585440-r2deomggok80frnjliifrmv77f6v9p4r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBOosop1cUq3aWmDp1BY8bSng1_gxBHF0Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "363754585440-r2deomggok80frnjliifrmv77f6v9p4r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
