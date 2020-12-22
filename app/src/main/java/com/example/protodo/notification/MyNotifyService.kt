@@ -54,7 +54,6 @@ class MyNotifyService : NotificationListenerService() {
             check = false
         }
         ("checking service 1$check").Log()
-
         return START_STICKY
     }
 

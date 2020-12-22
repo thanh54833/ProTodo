@@ -11,8 +11,8 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
-import androidx.databinding.DataBindingUtil
 import com.example.protodo.R
+import com.example.protodo.Utils.Log
 import com.example.protodo.abs.ProTodActivity
 import com.example.protodo.databinding.RemoteActBinding
 import java.io.BufferedWriter
@@ -51,8 +51,11 @@ class RemoteAct : ProTodActivity(), View.OnClickListener {
     @SuppressLint("ClickableViewAccessibility")
     override fun setupUI() {
 
-        context = this //save the context to show Toast messages
+        // on connect pc ..
+        val connectPhoneTask = ConnectPhoneTask()
+        connectPhoneTask.execute(Constants.SERVER_IP) //try to connect to server in another thread
 
+        context = this //save the context to show Toast messages
 
         //Get references of all buttons
 
@@ -153,19 +156,23 @@ class RemoteAct : ProTodActivity(), View.OnClickListener {
                 out?.println("exit") //tell server to exit
                 socket!!.close() //close socket
             } catch (e: IOException) {
-                Log.e("remotedroid", "Error in closing socket", e)
+                ("Error in closing socket").Log("remotedroid")
             }
         }
     }
 
     inner class ConnectPhoneTask : AsyncTask<String?, Void?, Boolean>() {
         override fun onPostExecute(result: Boolean) {
+            "onPostExecute :...".Log()
+
             isConnected = result
+
             Toast.makeText(
                 context,
                 if (isConnected) "Connected to server!" else "Error while connecting",
                 Toast.LENGTH_LONG
             ).show()
+
             try {
                 if (isConnected) {
                     out = PrintWriter(
@@ -177,19 +184,21 @@ class RemoteAct : ProTodActivity(), View.OnClickListener {
                     ) //create output stream to send data to server
                 }
             } catch (e: IOException) {
-                Log.e("remotedroid", "Error while creating OutWriter", e)
+                ("Error while creating OutWriter" + e.message).Log("remotedroid")
                 Toast.makeText(context, "Error while connecting", Toast.LENGTH_LONG).show()
             }
         }
 
         override fun doInBackground(vararg params: String?): Boolean {
+            "doInBackground :...".Log()
             var result = true
             try {
                 val serverAddr: InetAddress = InetAddress.getByName(params[0])
-                socket =
-                    Socket(serverAddr, Constants.SERVER_PORT) //Open socket on server IP and port
+                //Open socket on server IP and port
+                socket = Socket(serverAddr, Constants.SERVER_PORT)
+
             } catch (e: IOException) {
-                Log.e("remotedroid", "Error while connecting", e)
+                "Error while connecting :... ${e.message} ".Log()
                 result = false
             }
             return result

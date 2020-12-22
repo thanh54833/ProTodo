@@ -147,7 +147,6 @@
             android:windowSoftInputMode="adjustPan" />
 
 
-        
         <!-- Services -->
         <service
             android:name=".notification.MyNotifyService"
@@ -222,6 +221,12 @@
             android:launchMode="singleTop"
             android:windowSoftInputMode="adjustPan" />
 
+        <activity
+            android:name=".example.exercise.firebase.FireBaseAct"
+            android:configChanges="orientation|screenSize"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustPan" />
 
         <receiver android:name=".example.service.MyPhoneReceiver">
             <intent-filter>

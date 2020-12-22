@@ -4,6 +4,7 @@ import com.example.protodo.example.exercise.MVI.MVIAct
 import com.example.protodo.example.exercise.api.ApiAct
 import com.example.protodo.example.exercise.dagger2.Dagger2Act
 import com.example.protodo.example.exercise.dagger2.Dagger3Act
+import com.example.protodo.example.exercise.firebase.FireBaseAct
 import com.example.protodo.example.exercise.remote.RemoteAct
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -30,5 +31,9 @@ abstract class MainActivityModule {
 
     @ContributesAndroidInjector
     abstract fun bindRemoteAct(): RemoteAct
+
+    @ContributesAndroidInjector
+    abstract fun bindFireBaseAct(): FireBaseAct
+
 
 }
