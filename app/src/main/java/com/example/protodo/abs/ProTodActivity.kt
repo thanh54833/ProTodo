@@ -11,6 +11,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.databinding.ViewDataBinding
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.example.protodo.Utils.Log
 import com.example.protodo.common.KeyBoardModel
 import com.example.protodo.example.exercise.dagger2.FirstFragment
@@ -22,6 +24,10 @@ import javax.inject.Inject
 
 
 abstract class ProTodActivity : DaggerAppCompatActivity() {
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+
     private var keyBoardModel = KeyBoardModel()
     private var callBack: ViewTreeObserver.OnGlobalLayoutListener? = null
     private var heightOld: Int? = null
@@ -80,6 +86,7 @@ abstract class ProTodActivity : DaggerAppCompatActivity() {
 
     abstract fun setupUI()
     abstract fun observeViewModel()
+    abstract val viewModel: ViewModel
 
     private val rootView: View?
         get() {

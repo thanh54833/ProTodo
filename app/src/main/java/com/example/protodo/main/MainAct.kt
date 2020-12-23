@@ -10,6 +10,7 @@ import android.provider.MediaStore
 import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModel
 import com.example.protodo.R
 import com.example.protodo.Shortcuts.ShortCutModel
 import com.example.protodo.Shortcuts.ShortcutUtils
@@ -22,7 +23,7 @@ import com.example.protodo.editor.WriteAct
 import java.io.IOException
 
 
-class MainAct : ProTodActivity() {
+class MainAct(override val viewModel: ViewModel) : ProTodActivity() {
     lateinit var binding: ActivityMainBinding
     override fun initiativeView() {
         binding = DataBindingUtil.setContentView(this@MainAct, R.layout.activity_main)

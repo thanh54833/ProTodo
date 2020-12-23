@@ -1,6 +1,7 @@
 package com.example.protodo.example.exercise.dagger2
 
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModel
 import com.example.protodo.R
 import com.example.protodo.Utils.Log
 import com.example.protodo.abs.ProTodActivity
@@ -9,7 +10,7 @@ import com.example.protodo.example.exercise.dagger2.module.TestModule
 import dagger.Lazy
 import javax.inject.Inject
 
-class Dagger3Act : ProTodActivity() {
+class Dagger3Act(override val viewModel: ViewModel) : ProTodActivity() {
     @Inject
     lateinit var firstFragment: Lazy<FirstFragment>
 

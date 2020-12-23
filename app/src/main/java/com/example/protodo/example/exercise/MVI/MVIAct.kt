@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.protodo.R
@@ -22,19 +23,20 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-//@ExperimentalCoroutinesApi
-class MVIAct : ProTodActivity() {
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
 
+class MVIAct : ProTodActivity() {
     @ExperimentalCoroutinesApi
-    private val mainViewModel: MainViewModel by viewModels { viewModelFactory }
+    override val viewModel: MainViewModel by viewModels { viewModelFactory }
+
+
     private var adapter = MainAdapter(arrayListOf())
-    private lateinit var binding: MviActBinding
+
+    //override var binding: ViewDataBinding = DataBindingUtil.setContentView(this@MVIAct, R.layout.mvi_act)
+    lateinit var binding: MviActBinding
+    //override val viewModel: MainViewModel by viewModels { viewModelFactory }
 
     override fun initiativeView() {
         binding = DataBindingUtil.setContentView(this@MVIAct, R.layout.mvi_act)
-
         "MVIAct :..".Log()
         setupViewModel()
         observeViewModel()
@@ -42,7 +44,7 @@ class MVIAct : ProTodActivity() {
     }
 
     private fun setupClicks() {
-        
+
 //        binding.buttonFetchUser.setOnClickListener {
 //            lifecycleScope.launch {
 //                mainViewModel.userIntent.send(MainIntent.FetchUser)
@@ -51,7 +53,7 @@ class MVIAct : ProTodActivity() {
 
         //call api ....
         lifecycleScope.launch {
-            mainViewModel.userIntent.send(MainIntent.FetchUser)
+            viewModel.userIntent.send(MainIntent.FetchUser)
         }
     }
 
@@ -72,7 +74,7 @@ class MVIAct : ProTodActivity() {
 
     override fun observeViewModel() {
         lifecycleScope.launch {
-            mainViewModel.state.collect {
+            viewModel.state.collect {
                 //"mainViewModel.state :... $it ".Log()
                 when (it) {
                     is MainState.Idle -> {

@@ -5,10 +5,11 @@ import android.content.Context
 import android.content.Intent
 import android.content.ServiceConnection
 import android.os.IBinder
+import androidx.lifecycle.ViewModel
 import com.example.protodo.Utils.Log
 import com.example.protodo.abs.ProTodActivity
 
-class LocalWordAct : ProTodActivity(), ServiceConnection {
+class LocalWordAct(override val viewModel: ViewModel) : ProTodActivity(), ServiceConnection {
     private var service: LocalWordService? = null
     override fun onResume() {
         super.onResume()

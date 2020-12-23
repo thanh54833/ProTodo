@@ -1,12 +1,13 @@
 package com.example.protodo.todo
 
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModel
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation
 import com.example.protodo.R
 import com.example.protodo.abs.ProTodActivity
 import com.example.protodo.databinding.BasicActBinding
 
-class BasicAct : ProTodActivity() {
+class BasicAct(override val viewModel: ViewModel) : ProTodActivity() {
     private lateinit var binding: BasicActBinding
 
     override fun initiativeView() {

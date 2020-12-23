@@ -1,5 +1,6 @@
 package com.example.protodo.example.exercise.firebase
 
+import androidx.lifecycle.ViewModel
 import com.example.protodo.Utils.Log
 import com.example.protodo.abs.ProTodActivity
 
@@ -9,7 +10,7 @@ import com.example.protodo.abs.ProTodActivity
  *  thanh làm phần nhắn tin băng firebase ...
  *
  */
-class FirebaseMessage : ProTodActivity() {
+class FirebaseMessage(override val viewModel: ViewModel) : ProTodActivity() {
     override fun initiativeView() {
         "initiativeView:...".Log()
     }

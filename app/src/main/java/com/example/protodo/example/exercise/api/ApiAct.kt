@@ -5,6 +5,7 @@ import android.net.wifi.WifiManager
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModel
 import com.example.protodo.R
 import com.example.protodo.Utils.Log
 import com.example.protodo.abs.ProTodActivity
@@ -12,7 +13,7 @@ import com.example.protodo.databinding.ApiActBinding
 import java.io.IOException
 
 
-class ApiAct : ProTodActivity() {
+class ApiAct(override val viewModel: ViewModel) : ProTodActivity() {
     var server: HelloServer? = null
     lateinit var binding: ApiActBinding
 

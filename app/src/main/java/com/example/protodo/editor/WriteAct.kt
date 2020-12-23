@@ -27,6 +27,7 @@ import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModel
 import com.example.protodo.R
 import com.example.protodo.SettingUtils.SettingUtils
 import com.example.protodo.Utils.Log
@@ -46,7 +47,7 @@ import java.util.*
 import java.util.regex.Pattern
 
 
-class WriteAct : ProTodActivity() {
+class WriteAct(override val viewModel: ViewModel) : ProTodActivity() {
     lateinit var binding: WriteActBinding
     private var expandView: View? = null
     private var isExpand: Boolean = false

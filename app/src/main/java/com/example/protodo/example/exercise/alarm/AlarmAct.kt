@@ -10,6 +10,7 @@ import android.os.IBinder
 import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.ViewModel
 import com.example.protodo.R
 import com.example.protodo.Utils.Log
 import com.example.protodo.abs.ProTodActivity
@@ -18,7 +19,7 @@ import com.example.protodo.component.Notification
 import com.example.protodo.main.MainAct
 
 
-class AlarmAct : ProTodActivity(), ServiceConnection {
+class AlarmAct(override val viewModel: ViewModel) : ProTodActivity(), ServiceConnection {
     private var service: AlarmService? = null
 
     override fun onResume() {

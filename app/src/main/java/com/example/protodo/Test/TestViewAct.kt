@@ -17,6 +17,7 @@ import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModel
 import com.example.protodo.R
 import com.example.protodo.Utils.Log
 import com.example.protodo.abs.ProTodActivity
@@ -28,7 +29,7 @@ import com.example.protodo.palette.PaletteBottomView
 import com.example.protodo.permisstion.RxPermissions
 
 
-class TestViewAct : ProTodActivity() {
+class TestViewAct(override val viewModel: ViewModel) : ProTodActivity() {
     private lateinit var binding: TestViewActBinding
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP_MR1)

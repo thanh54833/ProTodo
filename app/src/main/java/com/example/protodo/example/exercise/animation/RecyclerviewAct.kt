@@ -1,6 +1,7 @@
 package com.example.protodo.example.exercise.animation
 
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModel
 import com.example.protodo.R
 import com.example.protodo.Utils.Log
 import com.example.protodo.abs.ProTodActivity
@@ -11,7 +12,7 @@ import com.halo.widget.recycle.HolderListenerBase
 import com.halo.widget.recycle.setContentView
 
 
-class RecyclerviewAct : ProTodActivity() {
+class RecyclerviewAct(override val viewModel: ViewModel) : ProTodActivity() {
     lateinit var binding: RecyclerviewActBinding
 
     override fun initiativeView() {

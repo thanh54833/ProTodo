@@ -2,6 +2,7 @@ package com.example.protodo.example.exercise.firebase
 
 import android.os.Parcelable
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModel
 import com.example.protodo.R
 import com.example.protodo.Utils.Log
 import com.example.protodo.abs.ProTodActivity
@@ -18,7 +19,7 @@ import kotlinx.android.parcel.Parcelize
  *
  */
 
-class FireBaseDataAct : ProTodActivity() {
+class FireBaseDataAct(override val viewModel: ViewModel) : ProTodActivity() {
     lateinit var binding: FireBaseActBinding
 
     override fun initiativeView() {

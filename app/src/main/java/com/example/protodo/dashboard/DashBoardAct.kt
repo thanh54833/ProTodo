@@ -1,6 +1,7 @@
 package com.example.protodo.dashboard
 
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModel
 import com.example.protodo.R
 import com.example.protodo.Utils.Log
 import com.example.protodo.abs.ProTodActivity
@@ -13,7 +14,7 @@ import com.halo.widget.recycle.HolderListenerBase
 import com.halo.widget.recycle.RecycleViewAnimation
 import com.halo.widget.recycle.setContentView
 
-class DashBoardAct : ProTodActivity() {
+class DashBoardAct(override val viewModel: ViewModel) : ProTodActivity() {
     lateinit var binding: DashBoardActBinding
     override fun initiativeView() {
         binding = DataBindingUtil.setContentView(this@DashBoardAct, R.layout.dash_board_act)

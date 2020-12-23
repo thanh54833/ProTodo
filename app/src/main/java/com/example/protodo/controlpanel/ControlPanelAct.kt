@@ -5,11 +5,12 @@ import android.content.Intent
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModel
 import com.example.protodo.R
 import com.example.protodo.abs.ProTodActivity
 import com.example.protodo.databinding.ControlPanelActBinding
 
-class ControlPanelAct : ProTodActivity() {
+class ControlPanelAct(override val viewModel: ViewModel) : ProTodActivity() {
     private lateinit var binding: ControlPanelActBinding
 
     override fun initiativeView() {

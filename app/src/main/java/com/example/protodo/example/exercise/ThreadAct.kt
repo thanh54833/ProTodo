@@ -1,5 +1,6 @@
 package com.example.protodo.example.exercise
 
+import androidx.lifecycle.ViewModel
 import com.example.protodo.Utils.Log
 import com.example.protodo.abs.ProTodActivity
 import io.reactivex.disposables.Disposable
@@ -8,7 +9,7 @@ import kotlinx.coroutines.flow.*
 import java.lang.Runnable
 
 
-class ThreadAct : ProTodActivity() {
+class ThreadAct(override val viewModel: ViewModel) : ProTodActivity() {
 
     override fun initiativeView() {
 //        Example2.main()

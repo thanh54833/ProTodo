@@ -11,6 +11,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.lifecycle.ViewModel
 import com.example.protodo.R
 import com.example.protodo.Utils.Log
 import com.example.protodo.abs.ProTodActivity
@@ -23,7 +24,7 @@ import java.net.InetAddress
 import java.net.Socket
 
 
-class RemoteAct : ProTodActivity(), View.OnClickListener {
+class RemoteAct(override val viewModel: ViewModel) : ProTodActivity(), View.OnClickListener {
     lateinit var binding: RemoteActBinding
     var context: Context? = null
     var playPauseButton: Button? = null

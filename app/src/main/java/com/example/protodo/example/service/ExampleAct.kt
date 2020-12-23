@@ -5,12 +5,13 @@ import android.app.PendingIntent
 import android.content.Intent
 import android.content.IntentFilter
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModel
 import com.example.protodo.R
 import com.example.protodo.abs.ProTodActivity
 import com.example.protodo.databinding.ExampleActBinding
 
 
-class ExampleAct : ProTodActivity() {
+class ExampleAct(override val viewModel: ViewModel) : ProTodActivity() {
     private lateinit var binding: ExampleActBinding
     private var receiver: ConnectionReceiver? = null
     private var intentFilter: IntentFilter? = null
