@@ -7,6 +7,8 @@ import com.example.protodo.example.exercise.dagger2.Dagger3Act
 import com.example.protodo.example.exercise.firebase.FireBaseDataAct
 import com.example.protodo.example.exercise.firebase.FirebaseMessage
 import com.example.protodo.example.exercise.remote.RemoteAct
+import com.example.protodo.example.exercise.room.RoomAct
+import com.example.protodo.example.exercise.speech.SpeechAct
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -36,5 +38,12 @@ abstract class MainActivityModule {
 
     @ContributesAndroidInjector
     abstract fun bindFirebaseMessage(): FirebaseMessage
-    
+
+    @ContributesAndroidInjector
+    abstract fun bindSpeechAct(): SpeechAct
+
+    @ContributesAndroidInjector
+    abstract fun bindRoomAct(): RoomAct
+
+
 }

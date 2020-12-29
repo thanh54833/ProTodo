@@ -1,6 +1,7 @@
 package com.example.protodo.abs
 
 import android.R
+import android.app.Activity
 import android.graphics.Color
 import android.graphics.Rect
 import android.os.Bundle
@@ -8,15 +9,13 @@ import android.view.View
 import android.view.ViewTreeObserver
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.protodo.Utils.Log
 import com.example.protodo.common.KeyBoardModel
-import com.example.protodo.example.exercise.dagger2.FirstFragment
-import dagger.Lazy
 import dagger.android.support.DaggerAppCompatActivity
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEventListener
@@ -32,7 +31,6 @@ abstract class ProTodActivity : DaggerAppCompatActivity() {
     private var callBack: ViewTreeObserver.OnGlobalLayoutListener? = null
     private var heightOld: Int? = null
     lateinit var keyBoardActListener: (width: Int, height: Int, isVisible: Boolean) -> Unit
-    //lateinit var binding: ViewDataBinding
 
 
     override fun onCreate(
@@ -88,6 +86,11 @@ abstract class ProTodActivity : DaggerAppCompatActivity() {
     abstract fun observeViewModel()
     abstract val viewModel: ViewModel
 
+//    lateinit var binding: ViewDataBinding
+//    fun <T> setBindingContentView(@IdRes layoutId: Int) {
+//        binding = DataBindingUtil.setContentView(this@ProTodActivity, layoutId)
+//    }
+
     private val rootView: View?
         get() {
             return this.findViewById<View>(R.id.content).rootView
@@ -98,6 +101,10 @@ abstract class ProTodActivity : DaggerAppCompatActivity() {
         val v: TextView = toast.view?.findViewById(R.id.message) as TextView
         v.setTextColor(color)
         toast.show()
+    }
+
+    fun <VDB : ViewDataBinding> getBindingView(activity: Activity, layoutId: Int): VDB {
+        return DataBindingUtil.setContentView(activity, layoutId)
     }
 
     companion object {

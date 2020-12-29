@@ -27,8 +27,6 @@ import javax.inject.Inject
 class MVIAct : ProTodActivity() {
     @ExperimentalCoroutinesApi
     override val viewModel: MainViewModel by viewModels { viewModelFactory }
-
-
     private var adapter = MainAdapter(arrayListOf())
 
     //override var binding: ViewDataBinding = DataBindingUtil.setContentView(this@MVIAct, R.layout.mvi_act)
@@ -37,10 +35,12 @@ class MVIAct : ProTodActivity() {
 
     override fun initiativeView() {
         binding = DataBindingUtil.setContentView(this@MVIAct, R.layout.mvi_act)
+
         "MVIAct :..".Log()
         setupViewModel()
         observeViewModel()
         setupClicks()
+
     }
 
     private fun setupClicks() {
@@ -132,11 +132,10 @@ class MVIAct : ProTodActivity() {
         ) { _binding, _item, _ ->
             _binding.textView.text = _item?.data?.name + "---" + _item?.position
         }
-
-
     }
 
     interface Interface {
 
     }
+
 }

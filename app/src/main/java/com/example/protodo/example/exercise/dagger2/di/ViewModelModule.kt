@@ -9,6 +9,7 @@ import com.example.protodo.example.exercise.MVI.di.MainRepository
 import com.example.protodo.example.exercise.MVI.di.MainRepositoryImpl
 import com.example.protodo.example.exercise.dagger2.FirstFragmentViewModel
 import com.example.protodo.example.exercise.dagger2.ViewModelFactory
+import com.example.protodo.example.exercise.room.RoomViewModel
 import dagger.Binds
 import dagger.MapKey
 import dagger.Module
@@ -32,11 +33,17 @@ abstract class ViewModelModule {
 
     @Singleton
     @Binds
+    abstract fun bindRoomViewModel(roomViewModel: RoomViewModel): ViewModel
+
+
+    @Singleton
+    @Binds
     abstract fun bindsCountryRepository(repository: ApiHelperImpl): ApiHelper
 
     @Singleton
     @Binds
     abstract fun bindsMainRepositoryImpl(repository: MainRepositoryImpl): MainRepository
+
 
     @Binds
     abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory
